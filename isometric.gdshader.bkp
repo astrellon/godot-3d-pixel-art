@@ -1,0 +1,49 @@
+shader_type spatial;
+render_mode world_vertex_coords, depth_prepass_alpha;
+
+global uniform vec2 screen_size;
+
+uniform sampler2D tex: filter_nearest;
+uniform vec2 texture_size = vec2(128.0, 128.0);
+
+varying vec2 pixel;
+
+void vertex() {
+	// Called for every vertex the material is visible on.
+	/*
+	vec4 vert = vec4(VERTEX, 1.0);
+	vert = MODELVIEW_MATRIX * vert;
+	vert = PROJECTION_MATRIX * vert;
+	
+	vec4 world_pos = MODELVIEW_MATRIX * vec4(0.0, 0.0, 0.0, 1.0);
+	world_pos = PROJECTION_MATRIX * world_pos;
+	pixel = vert.xy;
+	pixel = (pixel + 1.0 - world_pos.xy) * 0.125;
+	*/
+	vec4 vert = vec4(VERTEX, 1.0);
+	vert = MODELVIEW_MATRIX * vert;
+	vert = PROJECTION_MATRIX * vert;
+	
+	vec4 world_pos = MODELVIEW_MATRIX * vec4(0.0, 0.0, 0.0, 1.0);
+	world_pos = PROJECTION_MATRIX * world_pos;
+	pixel = vert.xy;
+	pixel = (pixel + 1.0) * 0.125;
+	
+	/* Working
+	vec4 vert = vec4(VERTEX, 1.0);
+	vert = MODELVIEW_MATRIX * vert;
+	vert = PROJECTION_MATRIX * vert;
+	pixel = vert.xy;
+	pixel = (pixel + 1.0) * 0.125;
+	*/
+}
+
+void fragment() {
+	// Called for every pixel the material is visible on.
+	//vec4 col = texture(tex, pixel * vec2(1280.0 / 64.0, 720.0 / 64.0));
+	//vec4 col = texture(tex, pixel * screen_size / texture_size * 2.0);
+
+	vec4 col = texture(tex, SCREEN_UV * screen_size / texture_size * 0.5);
+	ALBEDO = col.rgb;
+	ALPHA = col.a;
+}

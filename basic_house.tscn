@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://cxdwdfubg2srw"]
+
+[ext_resource type="PackedScene" uid="uid://dt4nltyd1qpp4" path="res://BasicHouse.glb" id="1_b5h8f"]
+[ext_resource type="Material" uid="uid://c3re7p3e64nrh" path="res://materials/isometric_altas_mat.tres" id="2_2bkcf"]
+
+[node name="BasicHouse2" instance=ExtResource("1_b5h8f")]
+
+[node name="BasicHouse" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_2bkcf")
+
+[node name="BasicHouseRoof" parent="." index="1"]
+surface_material_override/0 = ExtResource("2_2bkcf")
+
+[node name="BasicHouseDoor" parent="." index="2"]
+surface_material_override/0 = ExtResource("2_2bkcf")

@@ -3,7 +3,7 @@ render_mode world_vertex_coords, depth_prepass_alpha;
 
 global uniform vec2 screen_size;
 
-uniform sampler2D tex: filter_nearest;
+uniform sampler2D tex: filter_nearest, source_color;
 uniform vec2 texture_size = vec2(128.0, 128.0);
 
 varying vec2 world_offset;

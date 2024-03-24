@@ -94,3 +94,6 @@ target = NodePath(".")
 
 [node name="BasicHouse2" parent="." instance=ExtResource("6_u4bng")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2.25885, 0.77285, -1.02288)
+
+[node name="BasicHouse3" parent="." instance=ExtResource("6_u4bng")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2.25885, 0.77285, 2.80559)

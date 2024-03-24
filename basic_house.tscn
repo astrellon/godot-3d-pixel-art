@@ -1,7 +1,30 @@
-[gd_scene load_steps=3 format=3 uid="uid://cxdwdfubg2srw"]
+[gd_scene load_steps=7 format=3 uid="uid://cxdwdfubg2srw"]
 
 [ext_resource type="PackedScene" uid="uid://dt4nltyd1qpp4" path="res://BasicHouse.glb" id="1_b5h8f"]
 [ext_resource type="Material" uid="uid://c3re7p3e64nrh" path="res://materials/isometric_altas_mat.tres" id="2_2bkcf"]
+
+[sub_resource type="Curve" id="Curve_pnq0e"]
+_data = [Vector2(0, 0.978022), 0.0, 0.0909888, 0, 0, Vector2(0.768116, 0.758242), -1.03987, -1.03987, 0, 0, Vector2(1, 0.076923), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_8nv4o"]
+curve = SubResource("Curve_pnq0e")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_s3awf"]
+angle_min = -4.5
+angle_max = 312.3
+direction = Vector3(0, 10, 0)
+initial_velocity_min = 1.05
+initial_velocity_max = 1.05
+gravity = Vector3(0, 0, 0)
+scale_min = 0.1
+scale_max = 0.2
+scale_curve = SubResource("CurveTexture_8nv4o")
+turbulence_enabled = true
+turbulence_influence_min = 0.01
+turbulence_influence_max = 0.015
+
+[sub_resource type="BoxMesh" id="BoxMesh_aa3cn"]
 
 [node name="BasicHouse2" instance=ExtResource("1_b5h8f")]
 
@@ -13,3 +36,12 @@ surface_material_override/0 = ExtResource("2_2bkcf")
 
 [node name="BasicHouseDoor" parent="." index="2"]
 surface_material_override/0 = ExtResource("2_2bkcf")
+
+[node name="BasicHouseWindows" parent="." index="3"]
+surface_material_override/0 = ExtResource("2_2bkcf")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="." index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.373706, 1.24857, -0.649913)
+lifetime = 2.0
+process_material = SubResource("ParticleProcessMaterial_s3awf")
+draw_pass_1 = SubResource("BoxMesh_aa3cn")

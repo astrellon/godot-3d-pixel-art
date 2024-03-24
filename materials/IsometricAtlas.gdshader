@@ -11,6 +11,7 @@ varying vec2 world_offset;
 const float WOOD1 = 0.0;
 const float WOOD2 = 1.0;
 const float RED_WOOD = 2.0;
+const float GLASS = 6.0;
 
 void vertex() {
 	vec4 world_pos = MODELVIEW_MATRIX * vec4(0.0, 0.0, 0.0, 1.0);
@@ -24,11 +25,17 @@ void fragment() {
 	float grid_y = floor(UV.y * 8.0);
 	float grid_pos = grid_x + grid_y * 8.0;
 	
-	vec2 local_uv = (SCREEN_UV - world_offset) * screen_size / texture_size * 0.5;
+	vec2 local_uv = (SCREEN_UV - world_offset + UV * 32.0) * screen_size / texture_size * 0.5;
 	vec2 grid_uv = (mod(local_uv * 8.0, 1.0) + vec2(grid_x, grid_y)) / 8.0;
 	vec4 col = texture(tex, grid_uv);
 	ALBEDO = col.rgb;
 	ALPHA = col.a;
+	
+	ROUGHNESS = 0.9;
+	if (abs(grid_pos - GLASS) < 0.01) {
+		ROUGHNESS = 0.0;
+		METALLIC = 0.25;
+	}
 	
 	//ALBEDO = vec3(SCREEN_UV.xy, 0.0);
 }

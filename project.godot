@@ -34,3 +34,7 @@ screen_size={
 "type": "vec2",
 "value": Vector2(1280, 720)
 }
+camera_offset={
+"type": "vec2",
+"value": Vector2(0, 0)
+}

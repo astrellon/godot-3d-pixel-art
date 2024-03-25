@@ -16,6 +16,8 @@ angle_max = 312.3
 direction = Vector3(0, 10, 0)
 initial_velocity_min = 1.05
 initial_velocity_max = 1.05
+angular_velocity_min = -5.25
+angular_velocity_max = 10.65
 gravity = Vector3(0, 0, 0)
 scale_min = 0.1
 scale_max = 0.2
@@ -31,10 +33,10 @@ turbulence_influence_max = 0.015
 [node name="BasicHouse" parent="." index="0"]
 surface_material_override/0 = ExtResource("2_2bkcf")
 
-[node name="BasicHouseRoof" parent="." index="1"]
+[node name="BasicHouseDoor" parent="." index="1"]
 surface_material_override/0 = ExtResource("2_2bkcf")
 
-[node name="BasicHouseDoor" parent="." index="2"]
+[node name="BasicHouseRoof" parent="." index="2"]
 surface_material_override/0 = ExtResource("2_2bkcf")
 
 [node name="BasicHouseWindows" parent="." index="3"]

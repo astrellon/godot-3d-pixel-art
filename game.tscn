@@ -1,7 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://cvkh4akw0i5yi"]
+[gd_scene load_steps=7 format=3 uid="uid://cvkh4akw0i5yi"]
 
 [ext_resource type="PackedScene" uid="uid://bq873prt22uia" path="res://main.tscn" id="1_3w5iq"]
 [ext_resource type="Script" path="res://IsometricCamera.gd" id="1_n4s2s"]
+[ext_resource type="PackedScene" uid="uid://cerp67clk4hw2" path="res://test_cube.tscn" id="3_vup7g"]
+[ext_resource type="PackedScene" uid="uid://ctfu3ikk4bkty" path="res://tree.tscn" id="4_dlut5"]
+[ext_resource type="Material" uid="uid://c3re7p3e64nrh" path="res://materials/isometric_altas_mat.tres" id="5_jxequ"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_pc3wb"]
 viewport_path = NodePath("SubViewport")
@@ -30,6 +33,19 @@ script = ExtResource("1_n4s2s")
 
 [node name="Node3D" parent="SubViewport" instance=ExtResource("1_3w5iq")]
 
+[node name="TestCube" parent="SubViewport" instance=ExtResource("3_vup7g")]
+visible = false
+
+[node name="Tree2" parent="SubViewport" instance=ExtResource("4_dlut5")]
+transform = Transform3D(0.0174524, 0, -0.999848, 0, 1, 0, 0.999848, 0, 0.0174524, -5.13, 0, -4.175)
+
+[node name="Tree" parent="SubViewport/Tree2" index="0"]
+instance_shader_parameters/texture_offset = Vector2(1.265, -1.03)
+
+[node name="TreeLeaves" parent="SubViewport/Tree2" index="1"]
+instance_shader_parameters/texture_offset = Vector2(0.51, -0.095)
+surface_material_override/0 = ExtResource("5_jxequ")
+
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
@@ -48,3 +64,5 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Hello there"
+
+[editable path="SubViewport/Tree2"]

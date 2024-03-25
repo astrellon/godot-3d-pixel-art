@@ -3,6 +3,8 @@ render_mode world_vertex_coords, depth_prepass_alpha;
 
 global uniform vec2 screen_size;
 
+instance uniform vec2 texture_offset = vec2(0.0, 0.0);
+
 uniform sampler2D tex: filter_nearest, source_color;
 uniform vec2 texture_size = vec2(128.0, 128.0);
 
@@ -21,12 +23,11 @@ void vertex() {
 
 void fragment() {
 	// Called for every pixel the material is visible on.
-	float grid_x = floor(UV.x * 8.0);
-	float grid_y = floor(UV.y * 8.0);
-	float grid_pos = grid_x + grid_y * 8.0;
+	vec2 grid = floor(UV * 8.0);
+	float grid_pos = grid.x + grid.y * 8.0;
 	
-	vec2 local_uv = (SCREEN_UV - world_offset + UV * 32.0) * screen_size / texture_size * 0.5;
-	vec2 grid_uv = (mod(local_uv * 8.0, 1.0) + vec2(grid_x, grid_y)) / 8.0;
+	vec2 local_uv = (SCREEN_UV - world_offset + texture_offset / 32.0 + UV * 32.0) * screen_size / texture_size * 0.5;
+	vec2 grid_uv = (mod(local_uv * 8.0, 1.0) + grid) / 8.0;
 	vec4 col = texture(tex, grid_uv);
 	ALBEDO = col.rgb;
 	ALPHA = col.a;

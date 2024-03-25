@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://cxdwdfubg2srw"]
+[gd_scene load_steps=8 format=3 uid="uid://cxdwdfubg2srw"]
 
 [ext_resource type="PackedScene" uid="uid://dt4nltyd1qpp4" path="res://BasicHouse.glb" id="1_b5h8f"]
 [ext_resource type="Material" uid="uid://c3re7p3e64nrh" path="res://materials/isometric_altas_mat.tres" id="2_2bkcf"]
+[ext_resource type="Script" path="res://light_flicker.gd" id="3_1pbae"]
 
 [sub_resource type="Curve" id="Curve_pnq0e"]
 _data = [Vector2(0, 0.978022), 0.0, 0.0909888, 0, 0, Vector2(0.768116, 0.758242), -1.03987, -1.03987, 0, 0, Vector2(1, 0.076923), 0.0, 0.0, 0, 0]
@@ -47,3 +48,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.373706, 1.24857, -0.649913
 lifetime = 2.0
 process_material = SubResource("ParticleProcessMaterial_s3awf")
 draw_pass_1 = SubResource("BoxMesh_aa3cn")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="." index="5"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.243628, -0.359437, 0.000884652)
+light_color = Color(0.886275, 0.827451, 0.462745, 1)
+light_energy = 6.638
+script = ExtResource("3_1pbae")

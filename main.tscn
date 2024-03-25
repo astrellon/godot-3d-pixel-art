@@ -1,7 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://bq873prt22uia"]
+[gd_scene load_steps=15 format=3 uid="uid://bq873prt22uia"]
 
 [ext_resource type="Script" path="res://rotator.gd" id="1_ocppm"]
 [ext_resource type="Material" uid="uid://bklqhvlyb1b8i" path="res://materials/grass.tres" id="2_autx3"]
+[ext_resource type="PackedScene" uid="uid://ctfu3ikk4bkty" path="res://tree.tscn" id="4_n4dj8"]
 [ext_resource type="PackedScene" uid="uid://cxdwdfubg2srw" path="res://basic_house.tscn" id="6_u4bng"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_bo47y"]
@@ -97,3 +98,27 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2.258
 
 [node name="BasicHouse3" parent="." instance=ExtResource("6_u4bng")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2.25885, 0.77285, 2.80559)
+
+[node name="Tree3" parent="." instance=ExtResource("4_n4dj8")]
+transform = Transform3D(-0.528557, 0, 0.848898, 0, 1, 0, -0.848898, 0, -0.528557, -2.81221, -0.00336292, -6.91009)
+
+[node name="Tree6" parent="." instance=ExtResource("4_n4dj8")]
+transform = Transform3D(-0.528557, 0, 0.848898, 0, 1, 0, -0.848898, 0, -0.528557, -8.12051, -0.00336292, -5.49635)
+
+[node name="Tree7" parent="." instance=ExtResource("4_n4dj8")]
+transform = Transform3D(-0.528557, 0, 0.848898, 0, 1, 0, -0.848898, 0, -0.528557, 5.8156, -0.00336316, 6.72993)
+
+[node name="Tree8" parent="." instance=ExtResource("4_n4dj8")]
+transform = Transform3D(-0.528557, 0, 0.848898, 0, 1, 0, -0.848898, 0, -0.528557, 5.16037, -0.00336316, -5.52715)
+
+[node name="Tree9" parent="." instance=ExtResource("4_n4dj8")]
+transform = Transform3D(-0.528557, 0, 0.848898, 0, 1, 0, -0.848898, 0, -0.528557, -6.49535, -0.00336316, 7.16987)
+
+[node name="Tree10" parent="." instance=ExtResource("4_n4dj8")]
+transform = Transform3D(-0.528557, 0, 0.848898, 0, 1, 0, -0.848898, 0, -0.528557, -7.84295, -0.00336269, 0.572042)
+
+[node name="Tree5" parent="." instance=ExtResource("4_n4dj8")]
+transform = Transform3D(1.08857, 0, 0.158146, 0, 1.1, 0, -0.158146, 0, 1.08857, 0.977328, -0.00336292, 4.69889)
+
+[node name="Tree4" parent="." instance=ExtResource("4_n4dj8")]
+transform = Transform3D(-0.609509, 0, -0.792779, 0, 1, 0, 0.792779, 0, -0.609509, -1.73685, -0.00336292, 0.884655)

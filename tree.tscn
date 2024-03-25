@@ -3,9 +3,10 @@
 [ext_resource type="PackedScene" uid="uid://c36475h22a84r" path="res://Tree.glb" id="1_8qoo2"]
 [ext_resource type="Material" uid="uid://c3re7p3e64nrh" path="res://materials/isometric_altas_mat.tres" id="2_weg3g"]
 
-[node name="Tree2" instance=ExtResource("1_8qoo2")]
+[node name="Tree3" instance=ExtResource("1_8qoo2")]
 
 [node name="Tree" parent="." index="0"]
+instance_shader_parameters/texture_offset = Vector2(0.475, -0.34)
 surface_material_override/0 = ExtResource("2_weg3g")
 
 [node name="TreeLeaves" parent="." index="1"]

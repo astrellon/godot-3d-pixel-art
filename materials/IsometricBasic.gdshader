@@ -1,5 +1,5 @@
 shader_type spatial;
-render_mode world_vertex_coords, depth_prepass_alpha;
+render_mode world_vertex_coords, depth_prepass_alpha, cull_back;
 
 global uniform vec2 screen_size;
 

@@ -33,6 +33,7 @@ void fragment() {
 	ALPHA = col.a;
 	
 	ROUGHNESS = 0.9;
+	METALLIC = 0.0;
 	if (abs(grid_pos - GLASS) < 0.01) {
 		ROUGHNESS = 0.0;
 		METALLIC = 0.25;

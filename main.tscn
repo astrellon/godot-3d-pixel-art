@@ -1,8 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://bq873prt22uia"]
+[gd_scene load_steps=19 format=3 uid="uid://bq873prt22uia"]
 
 [ext_resource type="Script" path="res://rotator.gd" id="1_ocppm"]
-[ext_resource type="Material" uid="uid://bklqhvlyb1b8i" path="res://materials/grass.tres" id="2_autx3"]
+[ext_resource type="Material" uid="uid://bklqhvlyb1b8i" path="res://materials/grass.tres" id="2_keywd"]
 [ext_resource type="PackedScene" uid="uid://ctfu3ikk4bkty" path="res://tree.tscn" id="4_n4dj8"]
+[ext_resource type="Texture2D" uid="uid://bw2fueju2g7s" path="res://assets/Kenny/Poses/character_femalePerson_walk0.png" id="5_oobd3"]
+[ext_resource type="Script" path="res://Character.gd" id="6_0snoi"]
 [ext_resource type="PackedScene" uid="uid://cxdwdfubg2srw" path="res://basic_house.tscn" id="6_u4bng"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_bo47y"]
@@ -17,6 +19,8 @@ sky = SubResource("Sky_0ti1i")
 ssao_enabled = true
 sdfgi_enabled = true
 glow_enabled = true
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.0
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_r758l"]
 rough = true
@@ -39,6 +43,20 @@ points = PackedVector3Array(-0.000195742, -4.89354e-05, -1, -0.000195742, 0.0487
 
 [sub_resource type="PrismMesh" id="PrismMesh_mdm0t"]
 
+[sub_resource type="FogMaterial" id="FogMaterial_im3sb"]
+density = 0.5
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_x1ika"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_oobd3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="Node3D" type="Node3D"]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
@@ -59,7 +77,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.26693, 0)
 physics_material_override = SubResource("PhysicsMaterial_r758l")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="StaticBody3D"]
-material_override = ExtResource("2_autx3")
+material_override = ExtResource("2_keywd")
 mesh = SubResource("BoxMesh_sr6im")
 skeleton = NodePath("../..")
 
@@ -84,6 +102,7 @@ target = NodePath(".")
 [node name="OmniLight3D" type="OmniLight3D" parent="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.69234, 1, -1)
 light_color = Color(0.894118, 0.835294, 0.482353, 1)
+light_energy = 2.0
 shadow_enabled = true
 omni_attenuation = 0.63728
 
@@ -122,3 +141,23 @@ transform = Transform3D(1.08857, 0, 0.158146, 0, 1.1, 0, -0.158146, 0, 1.08857, 
 
 [node name="Tree4" parent="." instance=ExtResource("4_n4dj8")]
 transform = Transform3D(-0.609509, 0, -0.792779, 0, 1, 0, 0.792779, 0, -0.609509, -1.73685, -0.00336292, 0.884655)
+
+[node name="FogVolume" type="FogVolume" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0231944, 0)
+visible = false
+size = Vector3(20, 2, 20)
+material = SubResource("FogMaterial_im3sb")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(0.707107, 0.353554, -0.612372, 3.02059e-16, 0.866025, 0.5, 0.707107, -0.353554, 0.612372, -6.3667, -0.205647, 3.85635)
+centered = false
+billboard = 1
+shaded = true
+alpha_cut = 1
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_x1ika")
+frame_progress = 0.25799
+script = ExtResource("6_0snoi")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="AnimatedSprite3D"]
+transform = Transform3D(3.4965, 3.50074e-08, 1.79763e-07, 8.74426e-08, 3.4965, 7.70022e-07, -1.31747e-07, -1.31274e-06, 3.4965, 0.899146, 1.50391, 0.834595)

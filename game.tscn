@@ -1,7 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://cvkh4akw0i5yi"]
+[gd_scene load_steps=4 format=3 uid="uid://cvkh4akw0i5yi"]
 
 [ext_resource type="PackedScene" uid="uid://bq873prt22uia" path="res://main.tscn" id="1_3w5iq"]
-[ext_resource type="Script" path="res://IsometricCamera.gd" id="1_n4s2s"]
 [ext_resource type="PackedScene" uid="uid://cerp67clk4hw2" path="res://test_cube.tscn" id="3_vup7g"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_pc3wb"]
@@ -27,7 +26,6 @@ current = true
 size = 10.0
 near = 0.01
 far = 500.0
-script = ExtResource("1_n4s2s")
 
 [node name="Node3D" parent="SubViewport" instance=ExtResource("1_3w5iq")]
 

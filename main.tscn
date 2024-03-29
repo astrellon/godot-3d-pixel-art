@@ -1,9 +1,9 @@
-[gd_scene load_steps=19 format=3 uid="uid://bq873prt22uia"]
+[gd_scene load_steps=39 format=3 uid="uid://bq873prt22uia"]
 
 [ext_resource type="Script" path="res://rotator.gd" id="1_ocppm"]
 [ext_resource type="Material" uid="uid://bklqhvlyb1b8i" path="res://materials/grass.tres" id="2_keywd"]
 [ext_resource type="PackedScene" uid="uid://ctfu3ikk4bkty" path="res://tree.tscn" id="4_n4dj8"]
-[ext_resource type="Texture2D" uid="uid://bw2fueju2g7s" path="res://assets/Kenny/Poses/character_femalePerson_walk0.png" id="5_oobd3"]
+[ext_resource type="Texture2D" uid="uid://cqjoptcq5ka7g" path="res://assets/8-Directional Gameboy Character Template/loose sprites.png" id="5_kqt13"]
 [ext_resource type="Script" path="res://Character.gd" id="6_0snoi"]
 [ext_resource type="PackedScene" uid="uid://cxdwdfubg2srw" path="res://basic_house.tscn" id="6_u4bng"]
 
@@ -46,14 +46,186 @@ points = PackedVector3Array(-0.000195742, -4.89354e-05, -1, -0.000195742, 0.0487
 [sub_resource type="FogMaterial" id="FogMaterial_im3sb"]
 density = 0.5
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_bddfj"]
+atlas = ExtResource("5_kqt13")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2v2rj"]
+atlas = ExtResource("5_kqt13")
+region = Rect2(0, 80, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u5t70"]
+atlas = ExtResource("5_kqt13")
+region = Rect2(0, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3mifc"]
+atlas = ExtResource("5_kqt13")
+region = Rect2(0, 112, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ccr17"]
+atlas = ExtResource("5_kqt13")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_71sqi"]
+atlas = ExtResource("5_kqt13")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x03ti"]
+atlas = ExtResource("5_kqt13")
+region = Rect2(48, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m4owt"]
+atlas = ExtResource("5_kqt13")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cwmiw"]
+atlas = ExtResource("5_kqt13")
+region = Rect2(16, 80, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hmhtc"]
+atlas = ExtResource("5_kqt13")
+region = Rect2(32, 80, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tl3cl"]
+atlas = ExtResource("5_kqt13")
+region = Rect2(48, 80, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_old5h"]
+atlas = ExtResource("5_kqt13")
+region = Rect2(0, 80, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jcr22"]
+atlas = ExtResource("5_kqt13")
+region = Rect2(16, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n0py2"]
+atlas = ExtResource("5_kqt13")
+region = Rect2(32, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8aron"]
+atlas = ExtResource("5_kqt13")
+region = Rect2(48, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3cxhi"]
+atlas = ExtResource("5_kqt13")
+region = Rect2(0, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yax8m"]
+atlas = ExtResource("5_kqt13")
+region = Rect2(16, 112, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ytfbe"]
+atlas = ExtResource("5_kqt13")
+region = Rect2(32, 112, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cu8am"]
+atlas = ExtResource("5_kqt13")
+region = Rect2(48, 112, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d8ki6"]
+atlas = ExtResource("5_kqt13")
+region = Rect2(0, 112, 16, 16)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_x1ika"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("5_oobd3")
+"texture": SubResource("AtlasTexture_bddfj")
 }],
 "loop": true,
-"name": &"default",
+"name": &"idle_x_neg",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2v2rj")
+}],
+"loop": true,
+"name": &"idle_x_pos",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u5t70")
+}],
+"loop": true,
+"name": &"idle_z_neg",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3mifc")
+}],
+"loop": true,
+"name": &"idle_z_pos",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ccr17")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_71sqi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x03ti")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m4owt")
+}],
+"loop": true,
+"name": &"walk_x_neg",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cwmiw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hmhtc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tl3cl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_old5h")
+}],
+"loop": true,
+"name": &"walk_x_pos",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jcr22")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n0py2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8aron")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3cxhi")
+}],
+"loop": true,
+"name": &"walk_z_neg",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yax8m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ytfbe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cu8am")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d8ki6")
+}],
+"loop": true,
+"name": &"walk_z_pos",
 "speed": 5.0
 }]
 
@@ -149,14 +321,15 @@ size = Vector3(20, 2, 20)
 material = SubResource("FogMaterial_im3sb")
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
-transform = Transform3D(0.707107, 0.353554, -0.612372, 3.02059e-16, 0.866025, 0.5, 0.707107, -0.353554, 0.612372, -6.3667, -0.205647, 3.85635)
-centered = false
+transform = Transform3D(0.707107, 0.353554, -0.612372, 3.02059e-16, 0.866025, 0.5, 0.707107, -0.353554, 0.612372, -6.297, 0.018, 3.84756)
+pixel_size = 0.0278
 billboard = 1
 shaded = true
 alpha_cut = 1
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_x1ika")
-frame_progress = 0.25799
+animation = &"walk_z_pos"
+frame_progress = 0.536828
 script = ExtResource("6_0snoi")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="AnimatedSprite3D"]

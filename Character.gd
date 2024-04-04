@@ -37,28 +37,19 @@ func _process(delta):
 
 	do_move(move)
 
-	# var query_params = NavigationPathQueryParameters3D.new()
-	# var query_result = NavigationPathQueryResult3D.new();
 
-	# query_params.map = get_world_3d().get_navigation_map()
-	# query_params.start_position = global_position
-	# query_params.target_position
 
 const RAY_LENGTH = 1000.0
-var _prev_pressed = false
+var _clicked_at := Vector2.ZERO
+var _clicked := false
+
 
 func _physics_process(_delta):
-	var pressed = Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT)
-	var click = false
-	if pressed && !_prev_pressed:
-		click = true
-	_prev_pressed = pressed
-	
-	if !click:
+	if !_clicked:
 		return
 	
-	var mouse_pos = get_viewport().get_mouse_position()
-	print("Clicked at: " + str(mouse_pos))
+	_clicked = false
+	var mouse_pos = _clicked_at
 	var from = camera.project_ray_origin(mouse_pos)
 	var to = from + camera.project_ray_normal(mouse_pos) * RAY_LENGTH
 	var ray_cast = PhysicsRayQueryParameters3D.create(from, to)
@@ -68,10 +59,24 @@ func _physics_process(_delta):
 	var result = space_state.intersect_ray(ray_cast)
 
 	if result:
-		print("Hit: " + str(result['position']))
+		var hit_position = result['position']
+		calculate_nav(hit_position)
 	else:
 		print("No raycast hit")
 
+
+func calculate_nav(target:Vector3):
+	var query_params = NavigationPathQueryParameters3D.new()
+	var query_result = NavigationPathQueryResult3D.new();
+
+	query_params.map = get_world_3d().get_navigation_map()
+	query_params.start_position = global_position
+	query_params.target_position = target
+	
+	NavigationServer3D.query_path(query_params, query_result)
+	var path: PackedVector3Array = query_result.get_path()
+	print("Path: " + str(path))
+	
 
 func do_move(delta: Vector3):
 	var new_facing = facing
@@ -124,3 +129,9 @@ func create_animation_name(move_speed: MoveSpeed, facing: MoveDirection):
 		sprite_name += "z_pos"
 
 	return sprite_name
+
+
+func _on_game_input_event(event: InputEvent):
+	if event is InputEventMouseButton && event.button_index == 1 && event.pressed:
+		_clicked_at = event.position * 0.5
+		_clicked = true

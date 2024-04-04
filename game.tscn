@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://cvkh4akw0i5yi"]
+[gd_scene load_steps=8 format=3 uid="uid://cvkh4akw0i5yi"]
 
 [ext_resource type="PackedScene" uid="uid://bq873prt22uia" path="res://main.tscn" id="1_3w5iq"]
 [ext_resource type="Script" path="res://camera/main_camera.gd" id="1_gn25k"]
-[ext_resource type="PackedScene" uid="uid://dcgid880gr1i1" path="res://test_player.tscn" id="3_0tpmn"]
+[ext_resource type="Script" path="res://game.gd" id="1_sdiki"]
+[ext_resource type="PackedScene" path="res://test_player.tscn" id="3_0tpmn"]
 [ext_resource type="PackedScene" uid="uid://cerp67clk4hw2" path="res://test_cube.tscn" id="3_vup7g"]
 [ext_resource type="Script" path="res://Character.gd" id="4_3kxpp"]
 
@@ -16,9 +17,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_sdiki")
 
 [node name="SubViewport" type="SubViewport" parent="."]
-handle_input_locally = false
 size = Vector2i(640, 360)
 render_target_update_mode = 4
 
@@ -65,3 +66,5 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Hello there"
+
+[connection signal="input_event" from="." to="SubViewport/CharParent" method="_on_game_input_event"]

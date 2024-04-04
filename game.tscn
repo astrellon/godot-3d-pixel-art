@@ -1,7 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://cvkh4akw0i5yi"]
+[gd_scene load_steps=7 format=3 uid="uid://cvkh4akw0i5yi"]
 
 [ext_resource type="PackedScene" uid="uid://bq873prt22uia" path="res://main.tscn" id="1_3w5iq"]
+[ext_resource type="Script" path="res://camera/main_camera.gd" id="1_gn25k"]
+[ext_resource type="PackedScene" uid="uid://dcgid880gr1i1" path="res://test_player.tscn" id="3_0tpmn"]
 [ext_resource type="PackedScene" uid="uid://cerp67clk4hw2" path="res://test_cube.tscn" id="3_vup7g"]
+[ext_resource type="Script" path="res://Character.gd" id="4_3kxpp"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_pc3wb"]
 viewport_path = NodePath("SubViewport")
@@ -19,18 +22,30 @@ handle_input_locally = false
 size = Vector2i(640, 360)
 render_target_update_mode = 4
 
-[node name="Camera3D" type="Camera3D" parent="SubViewport"]
+[node name="Camera3D" type="Camera3D" parent="SubViewport" node_paths=PackedStringArray("target")]
 transform = Transform3D(0.707107, 0.353553, -0.612373, 0, 0.866026, 0.5, 0.707107, -0.353553, 0.612373, -10.4244, 7.52376, 11.1614)
 projection = 1
 current = true
 size = 10.0
 near = 0.01
 far = 500.0
+script = ExtResource("1_gn25k")
+target = NodePath("../CharParent")
 
 [node name="Node3D" parent="SubViewport" instance=ExtResource("1_3w5iq")]
 
 [node name="TestCube" parent="SubViewport" instance=ExtResource("3_vup7g")]
 visible = false
+
+[node name="CharParent" type="Node3D" parent="SubViewport" node_paths=PackedStringArray("graphic", "camera") groups=["snap"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.0874, 0, 3.48108)
+script = ExtResource("4_3kxpp")
+graphic = NodePath("AnimatedSprite3D")
+camera = NodePath("../Camera3D")
+
+[node name="AnimatedSprite3D" parent="SubViewport/CharParent" instance=ExtResource("3_0tpmn")]
+transform = Transform3D(0.707107, 0.353554, -0.612372, 3.02059e-16, 0.866025, 0.5, 0.707107, -0.353554, 0.612372, 0, 0, 0)
+script = null
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1

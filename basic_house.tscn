@@ -1,8 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://cxdwdfubg2srw"]
+[gd_scene load_steps=10 format=3 uid="uid://cxdwdfubg2srw"]
 
 [ext_resource type="PackedScene" uid="uid://dt4nltyd1qpp4" path="res://BasicHouse.glb" id="1_b5h8f"]
 [ext_resource type="Material" uid="uid://c3re7p3e64nrh" path="res://materials/isometric_altas_mat.tres" id="2_2bkcf"]
 [ext_resource type="Script" path="res://light_flicker.gd" id="3_1pbae"]
+[ext_resource type="Material" uid="uid://b5sy64po460ci" path="res://materials/dark_red.tres" id="4_xum6w"]
+[ext_resource type="Material" uid="uid://cxufk2e18veet" path="res://materials/brown.tres" id="5_perqv"]
 
 [sub_resource type="Curve" id="Curve_pnq0e"]
 _data = [Vector2(0, 0.978022), 0.0, 0.0909888, 0, 0, Vector2(0.768116, 0.758242), -1.03987, -1.03987, 0, 0, Vector2(1, 0.076923), 0.0, 0.0, 0, 0]
@@ -55,3 +57,15 @@ light_color = Color(0.886275, 0.827451, 0.462745, 1)
 light_energy = 6.638
 shadow_enabled = true
 script = ExtResource("3_1pbae")
+
+[node name="BasicHouseRoofOutline" parent="." index="6"]
+surface_material_override/0 = ExtResource("4_xum6w")
+
+[node name="BasicHouseOutline" parent="." index="7"]
+surface_material_override/0 = ExtResource("5_perqv")
+
+[node name="BasicHouseDoorOutline1" parent="." index="8"]
+surface_material_override/0 = ExtResource("4_xum6w")
+
+[node name="BasicHouseDoorOutline2" parent="." index="9"]
+surface_material_override/0 = ExtResource("4_xum6w")

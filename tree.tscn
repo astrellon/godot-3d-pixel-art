@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://ctfu3ikk4bkty"]
+[gd_scene load_steps=5 format=3 uid="uid://ctfu3ikk4bkty"]
 
 [ext_resource type="PackedScene" uid="uid://c36475h22a84r" path="res://Tree.glb" id="1_8qoo2"]
 [ext_resource type="Material" uid="uid://c3re7p3e64nrh" path="res://materials/isometric_altas_mat.tres" id="2_weg3g"]
+[ext_resource type="Material" uid="uid://dxqof1vmao2tb" path="res://materials/green.tres" id="3_jabp0"]
+[ext_resource type="Material" uid="uid://kbrf5xq6nsxo" path="res://materials/dark_brown.tres" id="4_4vksr"]
 
 [node name="Tree3" instance=ExtResource("1_8qoo2")]
 
@@ -11,3 +13,9 @@ surface_material_override/0 = ExtResource("2_weg3g")
 
 [node name="TreeLeaves" parent="." index="1"]
 surface_material_override/0 = ExtResource("2_weg3g")
+
+[node name="TreeLeavesOutline" parent="." index="2"]
+surface_material_override/0 = ExtResource("3_jabp0")
+
+[node name="TreeOutline" parent="." index="3"]
+surface_material_override/0 = ExtResource("4_4vksr")

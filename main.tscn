@@ -1,10 +1,8 @@
-[gd_scene load_steps=39 format=3 uid="uid://bq873prt22uia"]
+[gd_scene load_steps=17 format=3 uid="uid://bq873prt22uia"]
 
 [ext_resource type="Script" path="res://rotator.gd" id="1_ocppm"]
 [ext_resource type="Material" uid="uid://bklqhvlyb1b8i" path="res://materials/grass.tres" id="2_keywd"]
 [ext_resource type="PackedScene" uid="uid://ctfu3ikk4bkty" path="res://tree.tscn" id="4_n4dj8"]
-[ext_resource type="Texture2D" uid="uid://cqjoptcq5ka7g" path="res://assets/8-Directional Gameboy Character Template/loose sprites.png" id="5_kqt13"]
-[ext_resource type="Script" path="res://Character.gd" id="6_0snoi"]
 [ext_resource type="PackedScene" uid="uid://cxdwdfubg2srw" path="res://basic_house.tscn" id="6_u4bng"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_bo47y"]
@@ -46,190 +44,15 @@ points = PackedVector3Array(-0.000195742, -4.89354e-05, -1, -0.000195742, 0.0487
 [sub_resource type="FogMaterial" id="FogMaterial_im3sb"]
 density = 0.5
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_bddfj"]
-atlas = ExtResource("5_kqt13")
-region = Rect2(0, 16, 16, 16)
+[sub_resource type="NavigationMesh" id="NavigationMesh_xd0qs"]
+vertices = PackedVector3Array(-9.75, 0.18307, -5.5, -8.75, 0.18307, -5.5, -8.5, 0.18307, -6.25, -9.75, 0.18307, -9.75, -3.5, 0.18307, -7.25, -2.75, 0.18307, -7.5, -2.75, 0.18307, -9.75, -9.75, 0.18307, -9.75, -8.5, 0.18307, -6.25, -7.5, 0.18307, -5.5, -3.5, 0.18307, -7.25, -2.75, 0.18307, -9.75, -7.5, 0.18307, -5.5, -3, 0.18307, -6.25, -3.5, 0.18307, -6.5, -7.5, 0.18307, -5.5, -3.5, 0.18307, -6.5, -3.5, 0.18307, -7.25, -2.75, 0.18307, -9.75, -2.75, 0.18307, -7.5, -2.25, 0.18307, -7.25, 4.5, 0.18307, -6, 5.5, 0.18307, -6.25, 9.75, 0.18307, -9.75, -2.25, 0.18307, -6.5, -2.75, 0.18307, -6.25, -2.75, 0.18307, -2.5, -1, 0.18307, -2.5, -0.75, 0.18307, -2, 5, 0.18307, -4.75, 4.5, 0.18307, -5, 5.5, 0.18307, -6.25, 5.75, 0.18307, -5.5, 9.75, 0.18307, -5.5, 9.75, 0.18307, -9.75, -2.25, 0.18307, -6.5, -1, 0.18307, -2.5, -0.75, 0.18307, -2, 4.5, 0.18307, -5, 4.5, 0.18307, -6, -2.25, 0.18307, -7.25, -8.5, 0.18307, -4.75, -8.75, 0.18307, -5.5, -9.75, 0.18307, -5.5, -9.75, 0.18307, 0.5, -8.5, 0.18307, 0.5, -8.25, 0.18307, 0, -7.5, 0.18307, 0, -3.75, 0.18307, -2.25, -7.75, 0.18307, -4.75, -8.5, 0.18307, -4.75, -8.25, 0.18307, 0, -2.75, 0.18307, -2.5, -2.75, 0.18307, -6.25, -3, 0.18307, -6.25, -7.5, 0.18307, -5.5, -7.75, 0.18307, -4.75, -3.75, 0.18307, -2.25, -7.5, 0.18307, 0, -7.25, 0.18307, 0.5, -3.5, 0.18307, 0.5, -3.75, 0.18307, -2.25, -0.75, 0.18307, 3.75, 0.25, 0.18307, 4.25, 1.25, 0.18307, 4, -0.75, 0.18307, -2, 9.75, 0.18307, -5.5, 5.75, 0.18307, -5.5, 5.5, 0.18307, -4.75, 1.75, 0.18307, 4.75, 5.75, 0.18307, 6, 6, 0.18307, 6, 1.25, 0.18307, 4, 1.25, 0.18307, 4, 6, 0.18307, 6, 9.75, 0.18307, 6, 9.75, 0.18307, -5.5, 5.5, 0.18307, -4.75, -0.75, 0.18307, -2, 5.5, 0.18307, -4.75, 5, 0.18307, -4.75, -0.75, 0.18307, -2, -3, 0.18307, -1.75, -3, 0.18307, -0.5, -1.5, 0.18307, -0.5, -1.5, 0.18307, -1.75, -2.5, 0.18307, 1.5, -2.5, 0.18307, 0.5, -3.5, 0.18307, 0.5, -3.75, 0.18307, 1.5, -9.75, 0.18307, 8, -7.25, 0.18307, 7.25, -6.25, 0.18307, 6.5, -3.75, 0.18307, 4, -8.25, 0.18307, 1.25, -9.75, 0.18307, 0.5, -8.25, 0.18307, 1.25, -8.5, 0.18307, 0.5, -9.75, 0.18307, 0.5, -3.75, 0.18307, 1.5, -3.5, 0.18307, 0.5, -7.25, 0.18307, 0.5, -7.5, 0.18307, 1.25, -3.75, 0.18307, 1.5, -7.5, 0.18307, 1.25, -8.25, 0.18307, 1.25, -3.75, 0.18307, 4, -3, 0.18307, 2.25, -3, 0.18307, 3.5, -1.5, 0.18307, 3.5, -1.5, 0.18307, 2.25, 0.25, 0.18307, 4.25, -0.75, 0.18307, 3.75, -1, 0.18307, 4.25, 0.25, 0.18307, 5, 0.75, 0.18307, 5.25, 0.25, 0.18307, 5, -3.75, 0.18307, 4, -5.75, 0.18307, 6.75, -6.25, 0.18307, 8, 0.5, 0.18307, 9.75, -3.75, 0.18307, 4, -6.25, 0.18307, 6.5, -5.75, 0.18307, 6.75, -6.25, 0.18307, 8, -7.25, 0.18307, 7.25, -9.75, 0.18307, 8, -6.25, 0.18307, 8, -9.75, 0.18307, 8, -9.75, 0.18307, 9.75, 0.5, 0.18307, 9.75, 0.25, 0.18307, 5, -1, 0.18307, 4.25, -3.75, 0.18307, 4, 9.75, 0.18307, 6, 6, 0.18307, 6, 6.5, 0.18307, 7, 5, 0.18307, 6.75, 5.75, 0.18307, 6, 1.75, 0.18307, 4.75, 5, 0.18307, 6.75, 1.75, 0.18307, 4.75, 1.25, 0.18307, 5.5, 5.5, 0.18307, 7.5, 9.75, 0.18307, 9.75, 9.75, 0.18307, 6, 6.5, 0.18307, 7, 5.5, 0.18307, 7.5, 1.25, 0.18307, 5.5, 0.75, 0.18307, 5.25, 0.5, 0.18307, 9.75, 0.5, 0.18307, 9.75, 9.75, 0.18307, 9.75, 5.5, 0.18307, 7.5, 1.25, 0.18307, 5.5)
+polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(6, 5, 4), PackedInt32Array(8, 7, 9), PackedInt32Array(9, 7, 10), PackedInt32Array(10, 7, 11), PackedInt32Array(14, 13, 12), PackedInt32Array(17, 16, 15), PackedInt32Array(19, 18, 20), PackedInt32Array(20, 18, 21), PackedInt32Array(21, 18, 22), PackedInt32Array(22, 18, 23), PackedInt32Array(25, 24, 26), PackedInt32Array(26, 24, 27), PackedInt32Array(30, 29, 28), PackedInt32Array(32, 31, 33), PackedInt32Array(33, 31, 34), PackedInt32Array(36, 35, 37), PackedInt32Array(37, 35, 40), PackedInt32Array(37, 40, 38), PackedInt32Array(38, 40, 39), PackedInt32Array(42, 41, 43), PackedInt32Array(43, 41, 46), PackedInt32Array(43, 46, 45), PackedInt32Array(43, 45, 44), PackedInt32Array(47, 51, 48), PackedInt32Array(48, 51, 49), PackedInt32Array(49, 51, 50), PackedInt32Array(53, 52, 54), PackedInt32Array(54, 52, 57), PackedInt32Array(54, 57, 55), PackedInt32Array(55, 57, 56), PackedInt32Array(59, 58, 60), PackedInt32Array(60, 58, 61), PackedInt32Array(63, 62, 64), PackedInt32Array(64, 62, 65), PackedInt32Array(68, 67, 66), PackedInt32Array(70, 69, 71), PackedInt32Array(71, 69, 72), PackedInt32Array(74, 73, 75), PackedInt32Array(75, 73, 78), PackedInt32Array(75, 78, 77), PackedInt32Array(75, 77, 76), PackedInt32Array(81, 80, 79), PackedInt32Array(85, 84, 82), PackedInt32Array(82, 84, 83), PackedInt32Array(87, 86, 88), PackedInt32Array(88, 86, 89), PackedInt32Array(91, 90, 92), PackedInt32Array(92, 90, 93), PackedInt32Array(93, 90, 94), PackedInt32Array(94, 90, 95), PackedInt32Array(98, 97, 96), PackedInt32Array(102, 101, 99), PackedInt32Array(99, 101, 100), PackedInt32Array(104, 103, 105), PackedInt32Array(105, 103, 106), PackedInt32Array(110, 109, 107), PackedInt32Array(107, 109, 108), PackedInt32Array(112, 111, 113), PackedInt32Array(113, 111, 114), PackedInt32Array(116, 115, 117), PackedInt32Array(117, 115, 118), PackedInt32Array(118, 115, 119), PackedInt32Array(119, 115, 120), PackedInt32Array(123, 122, 121), PackedInt32Array(126, 125, 124), PackedInt32Array(128, 127, 129), PackedInt32Array(129, 127, 130), PackedInt32Array(133, 132, 131), PackedInt32Array(136, 135, 134), PackedInt32Array(139, 138, 137), PackedInt32Array(141, 140, 142), PackedInt32Array(142, 140, 143), PackedInt32Array(146, 145, 147), PackedInt32Array(147, 145, 144), PackedInt32Array(150, 149, 148), PackedInt32Array(154, 153, 151), PackedInt32Array(151, 153, 152)]
+geometry_source_geometry_mode = 1
+agent_height = 0.5
+agent_radius = 0.2
+agent_max_climb = 0.1
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_2v2rj"]
-atlas = ExtResource("5_kqt13")
-region = Rect2(0, 80, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_u5t70"]
-atlas = ExtResource("5_kqt13")
-region = Rect2(0, 48, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3mifc"]
-atlas = ExtResource("5_kqt13")
-region = Rect2(0, 112, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ccr17"]
-atlas = ExtResource("5_kqt13")
-region = Rect2(16, 16, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_71sqi"]
-atlas = ExtResource("5_kqt13")
-region = Rect2(32, 16, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_x03ti"]
-atlas = ExtResource("5_kqt13")
-region = Rect2(48, 16, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_m4owt"]
-atlas = ExtResource("5_kqt13")
-region = Rect2(0, 16, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_cwmiw"]
-atlas = ExtResource("5_kqt13")
-region = Rect2(16, 80, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hmhtc"]
-atlas = ExtResource("5_kqt13")
-region = Rect2(32, 80, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_tl3cl"]
-atlas = ExtResource("5_kqt13")
-region = Rect2(48, 80, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_old5h"]
-atlas = ExtResource("5_kqt13")
-region = Rect2(0, 80, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jcr22"]
-atlas = ExtResource("5_kqt13")
-region = Rect2(16, 48, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_n0py2"]
-atlas = ExtResource("5_kqt13")
-region = Rect2(32, 48, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8aron"]
-atlas = ExtResource("5_kqt13")
-region = Rect2(48, 48, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3cxhi"]
-atlas = ExtResource("5_kqt13")
-region = Rect2(0, 48, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_yax8m"]
-atlas = ExtResource("5_kqt13")
-region = Rect2(16, 112, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ytfbe"]
-atlas = ExtResource("5_kqt13")
-region = Rect2(32, 112, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_cu8am"]
-atlas = ExtResource("5_kqt13")
-region = Rect2(48, 112, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_d8ki6"]
-atlas = ExtResource("5_kqt13")
-region = Rect2(0, 112, 16, 16)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_x1ika"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_bddfj")
-}],
-"loop": true,
-"name": &"idle_x_neg",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2v2rj")
-}],
-"loop": true,
-"name": &"idle_x_pos",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_u5t70")
-}],
-"loop": true,
-"name": &"idle_z_neg",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_3mifc")
-}],
-"loop": true,
-"name": &"idle_z_pos",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ccr17")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_71sqi")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_x03ti")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_m4owt")
-}],
-"loop": true,
-"name": &"walk_x_neg",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_cwmiw")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_hmhtc")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_tl3cl")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_old5h")
-}],
-"loop": true,
-"name": &"walk_x_pos",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jcr22")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_n0py2")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8aron")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_3cxhi")
-}],
-"loop": true,
-"name": &"walk_z_neg",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_yax8m")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ytfbe")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_cu8am")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_d8ki6")
-}],
-"loop": true,
-"name": &"walk_z_pos",
-"speed": 5.0
-}]
-
-[node name="Node3D" type="Node3D"]
+[node name="Node3D" type="Node3D" groups=["navigation_mesh_source_group"]]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.977637, 0.142088, 0.15504, -0.210301, 0.660532, 0.720743, 0, -0.73723, 0.675642, 0, 0.849448, 0)
@@ -285,28 +108,28 @@ script = ExtResource("1_ocppm")
 target = NodePath(".")
 
 [node name="BasicHouse2" parent="." instance=ExtResource("6_u4bng")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2.25885, 0.77285, -1.02288)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2.25885, 0.822652, -1.02288)
 
 [node name="BasicHouse3" parent="." instance=ExtResource("6_u4bng")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2.25885, 0.77285, 2.80559)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2.25885, 0.822652, 2.80559)
 
 [node name="Tree3" parent="." instance=ExtResource("4_n4dj8")]
-transform = Transform3D(-0.528557, 0, 0.848898, 0, 1, 0, -0.848898, 0, -0.528557, -2.81221, -0.00336292, -6.91009)
+transform = Transform3D(-0.528557, 0, 0.848898, 0, 1, 0, -0.848898, 0, -0.528557, -2.81221, 0.0330943, -6.91009)
 
 [node name="Tree6" parent="." instance=ExtResource("4_n4dj8")]
-transform = Transform3D(-0.528557, 0, 0.848898, 0, 1, 0, -0.848898, 0, -0.528557, -8.12051, -0.00336292, -5.49635)
+transform = Transform3D(-0.528557, 0, 0.848898, 0, 1, 0, -0.848898, 0, -0.528557, -8.12051, 0.0330943, -5.49635)
 
 [node name="Tree7" parent="." instance=ExtResource("4_n4dj8")]
-transform = Transform3D(-0.528557, 0, 0.848898, 0, 1, 0, -0.848898, 0, -0.528557, 5.8156, -0.00336316, 6.72993)
+transform = Transform3D(-0.528557, 0, 0.848898, 0, 1, 0, -0.848898, 0, -0.528557, 5.8156, 0.033094, 6.72993)
 
 [node name="Tree8" parent="." instance=ExtResource("4_n4dj8")]
-transform = Transform3D(-0.528557, 0, 0.848898, 0, 1, 0, -0.848898, 0, -0.528557, 5.16037, -0.00336316, -5.52715)
+transform = Transform3D(-0.528557, 0, 0.848898, 0, 1, 0, -0.848898, 0, -0.528557, 5.16037, 0.033094, -5.52715)
 
 [node name="Tree9" parent="." instance=ExtResource("4_n4dj8")]
-transform = Transform3D(-0.528557, 0, 0.848898, 0, 1, 0, -0.848898, 0, -0.528557, -6.49535, -0.00336316, 7.16987)
+transform = Transform3D(-0.528557, 0, 0.848898, 0, 1, 0, -0.848898, 0, -0.528557, -6.49535, 0.033094, 7.16987)
 
 [node name="Tree10" parent="." instance=ExtResource("4_n4dj8")]
-transform = Transform3D(-0.528557, 0, 0.848898, 0, 1, 0, -0.848898, 0, -0.528557, -7.84295, -0.00336269, 0.572042)
+transform = Transform3D(-0.528557, 0, 0.848898, 0, 1, 0, -0.848898, 0, -0.528557, -7.84295, 0.0330945, 0.572042)
 
 [node name="Tree5" parent="." instance=ExtResource("4_n4dj8")]
 transform = Transform3D(1.08857, 0, 0.158146, 0, 1.1, 0, -0.158146, 0, 1.08857, 0.977328, -0.00336292, 4.69889)
@@ -320,17 +143,5 @@ visible = false
 size = Vector3(20, 2, 20)
 material = SubResource("FogMaterial_im3sb")
 
-[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
-transform = Transform3D(0.707107, 0.353554, -0.612372, 3.02059e-16, 0.866025, 0.5, 0.707107, -0.353554, 0.612372, -6.297, 0.018, 3.84756)
-pixel_size = 0.0278
-billboard = 1
-shaded = true
-alpha_cut = 1
-texture_filter = 0
-sprite_frames = SubResource("SpriteFrames_x1ika")
-animation = &"walk_z_pos"
-frame_progress = 0.536828
-script = ExtResource("6_0snoi")
-
-[node name="OmniLight3D" type="OmniLight3D" parent="AnimatedSprite3D"]
-transform = Transform3D(3.4965, 3.50074e-08, 1.79763e-07, 8.74426e-08, 3.4965, 7.70022e-07, -1.31747e-07, -1.31274e-06, 3.4965, 0.899146, 1.50391, 0.834595)
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_xd0qs")

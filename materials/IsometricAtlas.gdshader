@@ -26,7 +26,7 @@ void fragment() {
 	vec2 grid = floor(UV * 8.0);
 	float grid_pos = grid.x + grid.y * 8.0;
 	
-	vec2 local_uv = (SCREEN_UV - world_offset + texture_offset / 16.0 + UV * 16.0) * screen_size / texture_size * 0.5;
+	vec2 local_uv = (SCREEN_UV - world_offset + texture_offset / 16.0 + UV * 16.0) * screen_size / texture_size;
 	vec2 grid_uv = (mod(local_uv * 8.0, 1.0) + grid) / 8.0;
 	vec4 col = texture(tex, grid_uv);
 	ALBEDO = col.rgb;

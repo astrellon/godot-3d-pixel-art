@@ -1,9 +1,7 @@
-extends Node3D
+class_name Character extends Node3D
 
 @export var graphic: AnimatedSprite3D
-@export var camera: Camera3D
 
-const RAY_LENGTH = 1000.0
 const MOVE_SPEED = 2.5
 
 enum MoveDirection {
@@ -20,25 +18,7 @@ var _prev_animation : = ""
 var _nav_path := PackedVector3Array()
 var _nav_index := 0
 var _navigating := false
-var _clicked_at := Vector2.ZERO
-var _clicked := false
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-	#var move = Vector3.ZERO
-	#if Input.is_action_pressed("ui_left"):
-		#move += Vector3.FORWARD
-	#if Input.is_action_pressed("ui_right"):
-		#move += Vector3.BACK
-	#if Input.is_action_pressed("ui_up"):
-		#move += Vector3.RIGHT
-	#if Input.is_action_pressed("ui_down"):
-		#move += Vector3.LEFT
-#
-	#if move:
-		#move = move.normalized() * delta * MOVE_SPEED
-#
-	#do_move(move)
 
 func _process(delta: float) -> void:
 	var move = Vector3.ZERO
@@ -56,28 +36,7 @@ func _process(delta: float) -> void:
 	_do_move(move)
 
 
-func _physics_process(_delta):
-	if !_clicked:
-		return
-
-	_clicked = false
-	var mouse_pos = _clicked_at
-	var from = camera.project_ray_origin(mouse_pos)
-	var to = from + camera.project_ray_normal(mouse_pos) * RAY_LENGTH
-	var ray_cast = PhysicsRayQueryParameters3D.create(from, to)
-	ray_cast.collide_with_areas = true
-
-	var space_state = get_world_3d().direct_space_state
-	var result = space_state.intersect_ray(ray_cast)
-
-	if result:
-		var hit_position = result['position']
-		_calculate_nav(hit_position)
-	else:
-		print("No raycast hit")
-
-
-func _calculate_nav(target:Vector3):
+func calculate_nav(target:Vector3):
 	var query_params = NavigationPathQueryParameters3D.new()
 	var query_result = NavigationPathQueryResult3D.new();
 
@@ -139,9 +98,3 @@ static func _create_animation_name(move_speed: MoveSpeed, facing: MoveDirection)
 		sprite_name += "z_pos"
 
 	return sprite_name
-
-
-func _on_game_input_event(event: InputEvent):
-	if event is InputEventMouseButton && event.button_index == 1 && event.pressed:
-		_clicked_at = event.position * 0.5
-		_clicked = true

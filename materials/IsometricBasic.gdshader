@@ -16,7 +16,7 @@ void vertex() {
 
 void fragment() {
 	// Called for every pixel the material is visible on.
-	vec4 col = texture(tex, (SCREEN_UV - world_offset) * screen_size / texture_size * 0.5);
+	vec4 col = texture(tex, (SCREEN_UV - world_offset) * screen_size / texture_size);
 	ALBEDO = col.rgb;
 	ALPHA = col.a;
 }

@@ -71,6 +71,6 @@ func _follow_target() -> void:
 	
 	var target_screen = unproject_position(target.position)
 	var rounded = target_screen.round()
-	var projected = project_position(rounded, 10.0)
-	var pos = projected + _dir * 10.0
+	var projected = project_position(rounded, size)
+	var pos = projected + _dir * size
 	position = pos

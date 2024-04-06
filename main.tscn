@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://rotator.gd" id="1_ocppm"]
 [ext_resource type="Material" uid="uid://bklqhvlyb1b8i" path="res://materials/grass.tres" id="2_keywd"]
-[ext_resource type="PackedScene" uid="uid://ctfu3ikk4bkty" path="res://tree.tscn" id="4_n4dj8"]
-[ext_resource type="PackedScene" uid="uid://cxdwdfubg2srw" path="res://basic_house.tscn" id="6_u4bng"]
+[ext_resource type="PackedScene" uid="uid://ctfu3ikk4bkty" path="res://plants/tree.tscn" id="4_n4dj8"]
+[ext_resource type="PackedScene" uid="uid://cxdwdfubg2srw" path="res://buildings/basic_house.tscn" id="6_u4bng"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_bo47y"]
 

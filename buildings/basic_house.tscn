@@ -1,10 +1,10 @@
 [gd_scene load_steps=10 format=3 uid="uid://cxdwdfubg2srw"]
 
-[ext_resource type="PackedScene" uid="uid://dt4nltyd1qpp4" path="res://BasicHouse.glb" id="1_b5h8f"]
+[ext_resource type="PackedScene" uid="uid://dt4nltyd1qpp4" path="res://buildings/BasicHouse.glb" id="1_b5h8f"]
 [ext_resource type="Material" uid="uid://c3re7p3e64nrh" path="res://materials/isometric_altas_mat.tres" id="2_2bkcf"]
 [ext_resource type="Script" path="res://light_flicker.gd" id="3_1pbae"]
-[ext_resource type="Material" uid="uid://b5sy64po460ci" path="res://materials/dark_red.tres" id="4_xum6w"]
-[ext_resource type="Material" uid="uid://cxufk2e18veet" path="res://materials/brown.tres" id="5_perqv"]
+[ext_resource type="Material" path="res://materials/dark_red.tres" id="4_xum6w"]
+[ext_resource type="Material" path="res://materials/brown.tres" id="5_perqv"]
 
 [sub_resource type="Curve" id="Curve_pnq0e"]
 _data = [Vector2(0, 0.978022), 0.0, 0.0909888, 0, 0, Vector2(0.768116, 0.758242), -1.03987, -1.03987, 0, 0, Vector2(1, 0.076923), 0.0, 0.0, 0, 0]

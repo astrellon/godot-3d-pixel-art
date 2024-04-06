@@ -1,86 +1,86 @@
 [gd_scene load_steps=24 format=3 uid="uid://dcgid880gr1i1"]
 
-[ext_resource type="Texture2D" uid="uid://cqjoptcq5ka7g" path="res://assets/8-Directional Gameboy Character Template/loose sprites.png" id="1_t5xm2"]
-[ext_resource type="Script" path="res://Character.gd" id="2_5ympx"]
+[ext_resource type="Texture2D" uid="uid://cqjoptcq5ka7g" path="res://assets/8-Directional Gameboy Character Template/loose sprites.png" id="1_3hfmy"]
+[ext_resource type="Script" path="res://characters/character.gd" id="2_gnonl"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bddfj"]
-atlas = ExtResource("1_t5xm2")
+atlas = ExtResource("1_3hfmy")
 region = Rect2(0, 16, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2v2rj"]
-atlas = ExtResource("1_t5xm2")
+atlas = ExtResource("1_3hfmy")
 region = Rect2(0, 80, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_u5t70"]
-atlas = ExtResource("1_t5xm2")
+atlas = ExtResource("1_3hfmy")
 region = Rect2(0, 48, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3mifc"]
-atlas = ExtResource("1_t5xm2")
+atlas = ExtResource("1_3hfmy")
 region = Rect2(0, 112, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ccr17"]
-atlas = ExtResource("1_t5xm2")
+atlas = ExtResource("1_3hfmy")
 region = Rect2(16, 16, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_71sqi"]
-atlas = ExtResource("1_t5xm2")
+atlas = ExtResource("1_3hfmy")
 region = Rect2(32, 16, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_x03ti"]
-atlas = ExtResource("1_t5xm2")
+atlas = ExtResource("1_3hfmy")
 region = Rect2(48, 16, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_m4owt"]
-atlas = ExtResource("1_t5xm2")
+atlas = ExtResource("1_3hfmy")
 region = Rect2(0, 16, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cwmiw"]
-atlas = ExtResource("1_t5xm2")
+atlas = ExtResource("1_3hfmy")
 region = Rect2(16, 80, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hmhtc"]
-atlas = ExtResource("1_t5xm2")
+atlas = ExtResource("1_3hfmy")
 region = Rect2(32, 80, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tl3cl"]
-atlas = ExtResource("1_t5xm2")
+atlas = ExtResource("1_3hfmy")
 region = Rect2(48, 80, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_old5h"]
-atlas = ExtResource("1_t5xm2")
+atlas = ExtResource("1_3hfmy")
 region = Rect2(0, 80, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jcr22"]
-atlas = ExtResource("1_t5xm2")
+atlas = ExtResource("1_3hfmy")
 region = Rect2(16, 48, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n0py2"]
-atlas = ExtResource("1_t5xm2")
+atlas = ExtResource("1_3hfmy")
 region = Rect2(32, 48, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8aron"]
-atlas = ExtResource("1_t5xm2")
+atlas = ExtResource("1_3hfmy")
 region = Rect2(48, 48, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3cxhi"]
-atlas = ExtResource("1_t5xm2")
+atlas = ExtResource("1_3hfmy")
 region = Rect2(0, 48, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yax8m"]
-atlas = ExtResource("1_t5xm2")
+atlas = ExtResource("1_3hfmy")
 region = Rect2(16, 112, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ytfbe"]
-atlas = ExtResource("1_t5xm2")
+atlas = ExtResource("1_3hfmy")
 region = Rect2(32, 112, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cu8am"]
-atlas = ExtResource("1_t5xm2")
+atlas = ExtResource("1_3hfmy")
 region = Rect2(48, 112, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_d8ki6"]
-atlas = ExtResource("1_t5xm2")
+atlas = ExtResource("1_3hfmy")
 region = Rect2(0, 112, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_x1ika"]
@@ -196,7 +196,7 @@ texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_x1ika")
 animation = &"walk_z_pos"
 frame_progress = 0.536828
-script = ExtResource("2_5ympx")
+script = ExtResource("2_gnonl")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(3.4965, 3.50074e-08, 1.79763e-07, 8.74426e-08, 3.4965, 7.70022e-07, -1.31747e-07, -1.31274e-06, 3.4965, 0.899146, 1.50391, 0.834595)

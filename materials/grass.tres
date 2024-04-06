@@ -1,7 +1,7 @@
 [gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://bklqhvlyb1b8i"]
 
 [ext_resource type="Shader" path="res://materials/IsometricBasic.gdshader" id="1_saq7q"]
-[ext_resource type="Texture2D" uid="uid://dfvs77u2hlgks" path="res://grass.png" id="2_fjtji"]
+[ext_resource type="Texture2D" uid="uid://dfvs77u2hlgks" path="res://assets/grass.png" id="2_fjtji"]
 
 [resource]
 render_priority = 0

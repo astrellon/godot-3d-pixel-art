@@ -1,16 +1,15 @@
-[gd_scene load_steps=8 format=3 uid="uid://cvkh4akw0i5yi"]
+[gd_scene load_steps=7 format=3 uid="uid://cvkh4akw0i5yi"]
 
 [ext_resource type="PackedScene" uid="uid://bq873prt22uia" path="res://main.tscn" id="1_3w5iq"]
 [ext_resource type="Script" path="res://camera/main_camera.gd" id="1_gn25k"]
 [ext_resource type="Script" path="res://game.gd" id="1_sdiki"]
-[ext_resource type="PackedScene" uid="uid://dcgid880gr1i1" path="res://test_player.tscn" id="3_0tpmn"]
-[ext_resource type="PackedScene" uid="uid://cerp67clk4hw2" path="res://test_cube.tscn" id="3_vup7g"]
-[ext_resource type="Script" path="res://Character.gd" id="4_3kxpp"]
+[ext_resource type="PackedScene" uid="uid://dcgid880gr1i1" path="res://characters/test_player.tscn" id="3_0tpmn"]
+[ext_resource type="Script" path="res://characters/character.gd" id="4_3kxpp"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_pc3wb"]
 viewport_path = NodePath("SubViewport")
 
-[node name="Game" type="Control"]
+[node name="Game" type="Control" node_paths=PackedStringArray("target", "camera", "render_size", "viewport")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -18,6 +17,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_sdiki")
+target = NodePath("SubViewport/CharParent")
+camera = NodePath("SubViewport/Camera3D")
+render_size = NodePath("TextureRect")
+viewport = NodePath("SubViewport")
 
 [node name="SubViewport" type="SubViewport" parent="."]
 size = Vector2i(640, 360)
@@ -35,14 +38,10 @@ target = NodePath("../CharParent")
 
 [node name="Node3D" parent="SubViewport" instance=ExtResource("1_3w5iq")]
 
-[node name="TestCube" parent="SubViewport" instance=ExtResource("3_vup7g")]
-visible = false
-
-[node name="CharParent" type="Node3D" parent="SubViewport" node_paths=PackedStringArray("graphic", "camera") groups=["snap"]]
+[node name="CharParent" type="Node3D" parent="SubViewport" node_paths=PackedStringArray("graphic") groups=["snap"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.0874, 0, 3.48108)
 script = ExtResource("4_3kxpp")
 graphic = NodePath("AnimatedSprite3D")
-camera = NodePath("../Camera3D")
 
 [node name="AnimatedSprite3D" parent="SubViewport/CharParent" instance=ExtResource("3_0tpmn")]
 transform = Transform3D(0.707107, 0.353554, -0.612372, 3.02059e-16, 0.866025, 0.5, 0.707107, -0.353554, 0.612372, 0, 0, 0)
@@ -66,5 +65,3 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Hello there"
-
-[connection signal="input_event" from="." to="SubViewport/CharParent" method="_on_game_input_event"]

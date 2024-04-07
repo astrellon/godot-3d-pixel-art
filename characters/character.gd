@@ -1,6 +1,6 @@
 class_name Character extends Node3D
 
-@export var graphic: AnimatedSprite3D
+@export var graphic: Array[AnimatedSprite3D] = []
 
 const MOVE_SPEED = 2.5
 
@@ -74,7 +74,8 @@ func _do_move(delta: Vector3):
 
 	var sprite_name = _create_animation_name(new_move_speed, new_facing)
 	if sprite_name != _prev_animation:
-		graphic.play(sprite_name)
+		for g in graphic:
+			g.play(sprite_name)
 		_prev_animation = sprite_name
 
 	_facing = new_facing

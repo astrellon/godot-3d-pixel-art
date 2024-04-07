@@ -1,10 +1,10 @@
 [gd_scene load_steps=10 format=3 uid="uid://cxdwdfubg2srw"]
 
 [ext_resource type="PackedScene" uid="uid://dt4nltyd1qpp4" path="res://buildings/BasicHouse.glb" id="1_b5h8f"]
-[ext_resource type="Material" uid="uid://c3re7p3e64nrh" path="res://materials/isometric_altas_mat.tres" id="2_2bkcf"]
+[ext_resource type="Material" uid="uid://dc332g0u2nidr" path="res://materials/outline_altas.tres" id="2_hp1gd"]
 [ext_resource type="Script" path="res://light_flicker.gd" id="3_1pbae"]
-[ext_resource type="Material" path="res://materials/dark_red.tres" id="4_xum6w"]
-[ext_resource type="Material" path="res://materials/brown.tres" id="5_perqv"]
+[ext_resource type="Material" uid="uid://b5sy64po460ci" path="res://materials/dark_red.tres" id="4_xum6w"]
+[ext_resource type="Material" uid="uid://cxufk2e18veet" path="res://materials/brown.tres" id="5_perqv"]
 
 [sub_resource type="Curve" id="Curve_pnq0e"]
 _data = [Vector2(0, 0.978022), 0.0, 0.0909888, 0, 0, Vector2(0.768116, 0.758242), -1.03987, -1.03987, 0, 0, Vector2(1, 0.076923), 0.0, 0.0, 0, 0]
@@ -34,16 +34,16 @@ turbulence_influence_max = 0.015
 [node name="BasicHouse2" instance=ExtResource("1_b5h8f")]
 
 [node name="BasicHouse" parent="." index="0"]
-surface_material_override/0 = ExtResource("2_2bkcf")
+surface_material_override/0 = ExtResource("2_hp1gd")
 
 [node name="BasicHouseDoor" parent="." index="1"]
-surface_material_override/0 = ExtResource("2_2bkcf")
+surface_material_override/0 = ExtResource("2_hp1gd")
 
 [node name="BasicHouseRoof" parent="." index="2"]
-surface_material_override/0 = ExtResource("2_2bkcf")
+surface_material_override/0 = ExtResource("2_hp1gd")
 
 [node name="BasicHouseWindows" parent="." index="3"]
-surface_material_override/0 = ExtResource("2_2bkcf")
+surface_material_override/0 = ExtResource("2_hp1gd")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="." index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.373706, 1.24857, -0.649913)
@@ -59,13 +59,17 @@ shadow_enabled = true
 script = ExtResource("3_1pbae")
 
 [node name="BasicHouseRoofOutline" parent="." index="6"]
+visible = false
 surface_material_override/0 = ExtResource("4_xum6w")
 
 [node name="BasicHouseOutline" parent="." index="7"]
+visible = false
 surface_material_override/0 = ExtResource("5_perqv")
 
 [node name="BasicHouseDoorOutline1" parent="." index="8"]
+visible = false
 surface_material_override/0 = ExtResource("4_xum6w")
 
 [node name="BasicHouseDoorOutline2" parent="." index="9"]
+visible = false
 surface_material_override/0 = ExtResource("4_xum6w")

@@ -1,0 +1,19 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://ce2o3x5yxbkqa"]
+
+[ext_resource type="Shader" path="res://materials/outline_atlas.gdshader" id="1_miq0j"]
+[ext_resource type="Texture2D" uid="uid://cgyjiyywvka8r" path="res://assets/defaultTexture.png" id="2_r3fl2"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_miq0j")
+shader_parameter/texture_size = Vector2(256, 256)
+shader_parameter/tex = ExtResource("2_r3fl2")
+shader_parameter/albedo = Color(0.75, 0.75, 0.75, 1)
+shader_parameter/outline_color = Color(0.352941, 0.352941, 0.364706, 1)
+shader_parameter/edge_color = Color(0.352941, 0.352941, 0.352941, 1)
+shader_parameter/depth_threshold = 0.25
+shader_parameter/depth_normal_threshold = 0.5
+shader_parameter/depth_normal_threshold_scale = 2.0
+shader_parameter/convex_threshold = 0.5
+shader_parameter/convex_normal_threshold = 0.5
+shader_parameter/convex_normal_threshold_scale = 2.0

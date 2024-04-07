@@ -194,9 +194,10 @@ shaded = true
 alpha_cut = 1
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_x1ika")
-animation = &"walk_z_pos"
-frame_progress = 0.536828
+animation = &"idle_z_pos"
 script = ExtResource("2_gnonl")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(3.4965, 3.50074e-08, 1.79763e-07, 8.74426e-08, 3.4965, 7.70022e-07, -1.31747e-07, -1.31274e-06, 3.4965, 0.899146, 1.50391, 0.834595)
+transform = Transform3D(1, 0, 2.98023e-08, 0, 1, 1.11759e-06, 0, -5.06639e-07, 1, 0, 0.206251, 0.11908)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]

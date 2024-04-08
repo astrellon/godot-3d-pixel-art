@@ -4,6 +4,7 @@ extends Camera3D
 @export var snap := true
 @export var snap_objects := true
 @export var target: Node3D
+@export var move_speed := 10.0
 
 @onready var _prev_rotation := global_rotation
 @onready var _snap_space := global_transform
@@ -21,11 +22,16 @@ func _ready() -> void:
 	_follow_target()
 
 
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
+	
+	if !target:
+		_move_by_input(delta)
+		
 	# rotation changes the snap space
 	if global_rotation != _prev_rotation:
 		_prev_rotation = global_rotation
 		_snap_space = global_transform
+	
 	_texel_size = size / float((get_viewport() as SubViewport).size.y)
 	# camera position in snap space
 	var snap_space_position := global_position * _snap_space
@@ -45,6 +51,21 @@ func _process(_delta: float) -> void:
 		_texel_error = Vector2.ZERO
 
 
+func _move_by_input(delta: float) -> void:
+	var move = Vector3.ZERO
+	if Input.is_action_pressed("ui_left"):
+		move += Vector3.LEFT * delta * move_speed
+	if Input.is_action_pressed("ui_right"):
+		move += Vector3.RIGHT * delta * move_speed
+	if Input.is_action_pressed("ui_up"):
+		move += Vector3.UP * delta * move_speed
+	if Input.is_action_pressed("ui_down"):
+		move += Vector3.DOWN * delta * move_speed
+		
+	if move:
+		translate(move)
+
+
 func _snap_objects() -> void:
 	_snap_nodes = get_tree().get_nodes_in_group("snap")
 	_pre_snapped_positions.resize(_snap_nodes.size())
@@ -55,8 +76,9 @@ func _snap_objects() -> void:
 		var snap_space_pos := pos * _snap_space
 		var snapped_snap_space_pos := snap_space_pos.snapped(Vector3(_texel_size, _texel_size, 0.0))
 		node.global_position = _snap_space * snapped_snap_space_pos
-		
-	_follow_target()
+	
+	if target:
+		_follow_target()
 
 
 func _snap_objects_revert() -> void:

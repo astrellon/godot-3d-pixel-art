@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://c3re7p3e64nrh"]
 
-[ext_resource type="Shader" path="res://materials/IsometricAtlas.gdshader" id="1_hu6ye"]
+[ext_resource type="Shader" path="res://materials/isometric_atlas.gdshader" id="1_hu6ye"]
 [ext_resource type="Texture2D" uid="uid://cgyjiyywvka8r" path="res://assets/defaultTexture.png" id="2_hujnt"]
 
 [resource]

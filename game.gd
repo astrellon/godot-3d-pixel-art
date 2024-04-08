@@ -12,28 +12,12 @@ var _clicked_at := Vector2.ZERO
 var _clicked := false
 var _window_size := Vector2(1280, 720)
 
-func dir(class_instance):
-	var output = {}
-	var methods = []
-	for method in class_instance.get_method_list():
-		methods.append(method.name)
 
-	output["METHODS"] = methods
-
-	var properties = []
-	for prop in class_instance.get_property_list():
-		if prop.type == 3:
-			properties.append(prop.name)
-			properties.append(str(class_instance[prop.name]))
-	output["PROPERTIES"] = properties
-
-	return output
-	
-func _ready():
+func _ready() -> void:
 	get_tree().root.size_changed.connect(_on_window_resize)
 	_on_window_resize()
 	
-func _on_window_resize():
+func _on_window_resize() -> void:
 	_window_size = get_tree().root.size
 	
 	var scaled_size = _window_size / pixel_size
@@ -46,11 +30,10 @@ func _on_window_resize():
 func _input(event: InputEvent):
 	input_event.emit(event)
 	if event is InputEventMouseButton && event.button_index == 1 && event.pressed:
-		#_clicked_at = event.position * Vector2(640.0 / render_size.size.x, 360.0 / render_size.size.y)
 		_clicked_at = event.position * _window_size / render_size.size / pixel_size
 		_clicked = true
 
-func _physics_process(delta):
+func _physics_process(delta) -> void:
 	if !_clicked:
 		return
 
@@ -65,7 +48,26 @@ func _physics_process(delta):
 	var result = space_state.intersect_ray(ray_cast)
 
 	if result:
-		var hit_position = result['position']
-		target.calculate_nav(hit_position)
+		var hit = result['collider']
+		var changed_target := false
+		if hit:
+			var parent = hit.get_parent()
+			if parent is Character:
+				_change_target(parent)
+				changed_target = true
+		
+		if !changed_target && target:
+			var hit_position = result['position']
+			target.calculate_nav(hit_position)
 	else:
 		print("No raycast hit")
+
+
+func _change_target(new_target: Character) -> void:
+	if target:
+		target.is_selected = false
+	
+	if new_target:
+		new_target.is_selected = true
+	
+	target = new_target

@@ -19,3 +19,6 @@ mono_crash.*.json
 **/*.x86_64
 **/*.exe
 **/.DS_Store
+/bin
+
+**/*.swp

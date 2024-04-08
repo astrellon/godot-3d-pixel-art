@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://bxv2bd0un8t7"]
+
+[ext_resource type="PackedScene" uid="uid://b83s201t081sa" path="res://characters/adult_character.tscn" id="1_o05rc"]
+[ext_resource type="SpriteFrames" uid="uid://tgb0smlg3vin" path="res://characters/child_sprites.tres" id="2_7pyuu"]
+
+[node name="Child" instance=ExtResource("1_o05rc")]
+base_sprite_frames = ExtResource("2_7pyuu")
+is_adult = false

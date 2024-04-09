@@ -1,35 +1,30 @@
 [gd_scene load_steps=10 format=3 uid="uid://cxdwdfubg2srw"]
 
 [ext_resource type="PackedScene" uid="uid://dt4nltyd1qpp4" path="res://buildings/BasicHouse.glb" id="1_b5h8f"]
-[ext_resource type="Material" uid="uid://dc332g0u2nidr" path="res://materials/outline_altas.tres" id="2_hp1gd"]
+[ext_resource type="Material" path="res://materials/outline_altas.tres" id="2_hp1gd"]
 [ext_resource type="Script" path="res://light_flicker.gd" id="3_1pbae"]
-[ext_resource type="Material" uid="uid://b5sy64po460ci" path="res://materials/dark_red.tres" id="4_xum6w"]
-[ext_resource type="Material" uid="uid://cxufk2e18veet" path="res://materials/brown.tres" id="5_perqv"]
+[ext_resource type="ArrayMesh" uid="uid://buhtkqqtm6w5d" path="res://buildings/smoke_mesh.tres" id="3_4pjwh"]
+[ext_resource type="Material" path="res://materials/dark_red.tres" id="4_xum6w"]
+[ext_resource type="Material" path="res://materials/brown.tres" id="5_perqv"]
 
 [sub_resource type="Curve" id="Curve_pnq0e"]
-_data = [Vector2(0, 0.978022), 0.0, 0.0909888, 0, 0, Vector2(0.768116, 0.758242), -1.03987, -1.03987, 0, 0, Vector2(1, 0.076923), 0.0, 0.0, 0, 0]
-point_count = 3
+_data = [Vector2(0, 0.00564265), 0.0, 6.0684, 0, 0, Vector2(0.120879, 0.995925), 0.741693, 0.741693, 0, 0, Vector2(0.768116, 0.758242), -1.03987, -1.03987, 0, 0, Vector2(1, 0.076923), 0.0, 0.0, 0, 0]
+point_count = 4
 
 [sub_resource type="CurveTexture" id="CurveTexture_8nv4o"]
 curve = SubResource("Curve_pnq0e")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_s3awf"]
-angle_min = -4.5
-angle_max = 312.3
 direction = Vector3(0, 10, 0)
-initial_velocity_min = 1.05
-initial_velocity_max = 1.05
-angular_velocity_min = -5.25
-angular_velocity_max = 10.65
+initial_velocity_min = 1.2
+initial_velocity_max = 1.2
 gravity = Vector3(0, 0, 0)
-scale_min = 0.1
-scale_max = 0.2
+scale_min = 0.15
+scale_max = 0.3
 scale_curve = SubResource("CurveTexture_8nv4o")
 turbulence_enabled = true
 turbulence_influence_min = 0.01
 turbulence_influence_max = 0.015
-
-[sub_resource type="BoxMesh" id="BoxMesh_aa3cn"]
 
 [node name="BasicHouse2" instance=ExtResource("1_b5h8f")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
@@ -54,7 +49,7 @@ surface_material_override/0 = ExtResource("2_hp1gd")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.373706, 2.24687, -0.649913)
 lifetime = 2.0
 process_material = SubResource("ParticleProcessMaterial_s3awf")
-draw_pass_1 = SubResource("BoxMesh_aa3cn")
+draw_pass_1 = ExtResource("3_4pjwh")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="." index="5"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.546437, 0.638865, 0.000884652)

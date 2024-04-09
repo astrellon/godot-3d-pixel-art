@@ -30,6 +30,80 @@ float remap(float value, float low1, float high1, float low2, float high2) {
     return low2 + (value - low1) * (high2 - low2) / (high1 - low1);
 }
 
+
+
+mat3 rotateX(float theta)
+{
+	
+	float cosa = cos(theta);
+	float sina = sin(theta);
+
+ 
+    //Y rotation	
+	mat3 rotate_x  = mat3(
+	   vec3(1.0, 0.0, 0.0),
+	   vec3(0.0, cosa, -sina),
+	   vec3(0.0, sina, cosa)
+	);
+	
+	return rotate_x;
+}
+
+
+
+
+
+mat3 rotateY(float theta)
+{
+	
+	float cosa = cos(theta);
+	float sina = sin(theta);
+
+ 
+    //Y rotation	
+	mat3 rotate_y  = mat3(
+	   vec3(cosa, 0.0, sina),
+	   vec3(0.0, 1.0, 0.0),
+	   vec3(-sina, 0.0, cosa)
+	);
+	
+	return rotate_y;
+}
+
+
+
+mat3 rotateZ(float theta)
+{
+	
+	float cosa = cos(theta);
+	float sina = sin(theta);
+
+ 
+    //Y rotation	
+	mat3 rotate_z  = mat3(
+	   vec3(cosa,-sina, 0.0),
+	   vec3(sina, cosa, 0.0),
+	   vec3(0.0, 0.0, 1.0)
+	);
+	
+	return rotate_z;
+}
+
+
+void vertex()
+{
+	float t = TIME + float(INSTANCE_ID);
+	float x = t;
+	float y = t * 0.75;
+	float z = t * 0.4;
+	mat3 rotation_matrix =  rotateX(x) * rotateY(y) * rotateZ(z);
+	vec3 rotated_vertex =  rotation_matrix * VERTEX;
+	vec3 rotated_normals =  rotation_matrix * NORMAL;
+
+	VERTEX =  rotated_vertex;
+	NORMAL =  rotated_normals;
+}
+
 void fragment() {
 	ALBEDO = albedo.rgb;
 	

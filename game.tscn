@@ -1,13 +1,19 @@
-[gd_scene load_steps=7 format=3 uid="uid://cvkh4akw0i5yi"]
+[gd_scene load_steps=10 format=3 uid="uid://cvkh4akw0i5yi"]
 
 [ext_resource type="PackedScene" uid="uid://bq873prt22uia" path="res://main.tscn" id="1_3w5iq"]
 [ext_resource type="Script" path="res://camera/main_camera.gd" id="1_gn25k"]
 [ext_resource type="Script" path="res://game.gd" id="1_sdiki"]
+[ext_resource type="PackedScene" uid="uid://cxdwdfubg2srw" path="res://buildings/basic_house.tscn" id="2_m1vjc"]
 [ext_resource type="PackedScene" uid="uid://bxv2bd0un8t7" path="res://characters/child_character.tscn" id="3_mowa2"]
 [ext_resource type="PackedScene" uid="uid://b83s201t081sa" path="res://characters/adult_character.tscn" id="4_7j5jx"]
+[ext_resource type="FontFile" uid="uid://bp1n3rob5u1xu" path="res://assets/Dogica/TTF/dogicapixel.ttf" id="6_4wxuv"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_pc3wb"]
 viewport_path = NodePath("SubViewport")
+
+[sub_resource type="Theme" id="Theme_bpbes"]
+default_font = ExtResource("6_4wxuv")
+default_font_size = 16
 
 [node name="Game" type="Control" node_paths=PackedStringArray("camera", "render_size", "viewport")]
 layout_mode = 3
@@ -20,6 +26,7 @@ script = ExtResource("1_sdiki")
 camera = NodePath("SubViewport/Camera3D")
 render_size = NodePath("TextureRect")
 viewport = NodePath("SubViewport")
+building_file = ExtResource("2_m1vjc")
 
 [node name="SubViewport" type="SubViewport" parent="."]
 size = Vector2i(640, 360)
@@ -52,11 +59,13 @@ grow_vertical = 2
 texture = SubResource("ViewportTexture_pc3wb")
 stretch_mode = 4
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Hello there"
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 11.0
+offset_right = 119.0
+offset_bottom = 42.0
+theme = SubResource("Theme_bpbes")
+text = "Build"
+
+[connection signal="pressed" from="Button" to="." method="_on_build_click"]

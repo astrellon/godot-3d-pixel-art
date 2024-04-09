@@ -88,10 +88,10 @@ script = ExtResource("1_ocppm")
 target = NodePath(".")
 
 [node name="BasicHouse2" parent="." instance=ExtResource("6_u4bng")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2.25885, 0.822652, -1.02288)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2.25885, -0.212647, -1.02288)
 
 [node name="BasicHouse3" parent="." instance=ExtResource("6_u4bng")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2.25885, 0.822652, 2.80559)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2.25885, -0.212647, 2.80559)
 
 [node name="Tree3" parent="." instance=ExtResource("4_n4dj8")]
 transform = Transform3D(-0.528557, 0, 0.848898, 0, 1, 0, -0.848898, 0, -0.528557, -2.81221, 0.0330943, -6.91009)

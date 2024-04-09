@@ -1,0 +1,38 @@
+Common questions and answers
+
+1. How to use Dogica on GB Studio?
+
+ - Select one picture of Dogica from the ascii gb studio folder ( 01 or 02 for regular | 03 or 04 for bold )
+ - Copy and paste the picture on your game folder: assets / ui
+ - Rename the picture in ascii
+ - Done! Check your game inside GB Studio 
+    For more information https://gbstudio.dev
+
+2. Is Dogica free for commercial purposes?
+   
+   Yes!
+
+3. Is credit/attribution required?
+
+   Not required for graphic raster purposes, i.e. posters or business cards,  however modifications to the font itself and including the font in games or applications requires attribution and the license notice. 
+
+4. How to give support?
+
+   Donations: patreon.com/rmocci
+   PayPal: da.iosonor@gmail.com
+   Itch.io: rmocci.itch.io
+   Twitter: twitter.com/avreference
+   Instagram: instagram.com/audiovisualreference
+   Dogecoin: D6HPdSudzk1MuoDLBRpGGtbc9xTzjxLPZr
+
+5. What is AV Reference?
+
+   It is a library of resources by me, for you. All of those resources are randomly made and of raw nature; in other words, you need to add your creative touch to re-use them!
+
+6. Is there a warranty?
+
+   No! Dogica and Dogica Pixel are released "AS IS". Use at your own risk.
+
+7. Any refund?
+
+   No! Dogica and Dogica Pixel are free.

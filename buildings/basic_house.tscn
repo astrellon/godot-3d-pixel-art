@@ -32,44 +32,58 @@ turbulence_influence_max = 0.015
 [sub_resource type="BoxMesh" id="BoxMesh_aa3cn"]
 
 [node name="BasicHouse2" instance=ExtResource("1_b5h8f")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
 
 [node name="BasicHouse" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.998302, 0)
 surface_material_override/0 = ExtResource("2_hp1gd")
 
 [node name="BasicHouseDoor" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.998302, 0)
 surface_material_override/0 = ExtResource("2_hp1gd")
 
 [node name="BasicHouseRoof" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.998302, 0)
 surface_material_override/0 = ExtResource("2_hp1gd")
 
 [node name="BasicHouseWindows" parent="." index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.998302, 0)
 surface_material_override/0 = ExtResource("2_hp1gd")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="." index="4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.373706, 1.24857, -0.649913)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.373706, 2.24687, -0.649913)
 lifetime = 2.0
 process_material = SubResource("ParticleProcessMaterial_s3awf")
 draw_pass_1 = SubResource("BoxMesh_aa3cn")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="." index="5"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.546437, -0.359437, 0.000884652)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.546437, 0.638865, 0.000884652)
 light_color = Color(0.886275, 0.827451, 0.462745, 1)
 light_energy = 6.638
 shadow_enabled = true
 script = ExtResource("3_1pbae")
 
 [node name="BasicHouseRoofOutline" parent="." index="6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.998302, 0)
 visible = false
 surface_material_override/0 = ExtResource("4_xum6w")
 
 [node name="BasicHouseOutline" parent="." index="7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.998302, 0)
 visible = false
 surface_material_override/0 = ExtResource("5_perqv")
 
 [node name="BasicHouseDoorOutline1" parent="." index="8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.998302, 0)
 visible = false
 surface_material_override/0 = ExtResource("4_xum6w")
 
 [node name="BasicHouseDoorOutline2" parent="." index="9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.998302, 0)
 visible = false
 surface_material_override/0 = ExtResource("4_xum6w")
+
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="." index="10"]
+radius = 1.5
+vertices = PackedVector3Array(-0.999542, 0, -1.00921, -1.08384, 0, 0.994593, 1.04881, 0, 1.03538, 1.02424, 0, -1.11856)
+use_3d_avoidance = true

@@ -9,7 +9,7 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta: float):
 	var t = Time.get_ticks_msec() / 1000.0 * 50.0;
 	var noise_x = fmod(position.x + t, 1000.0);
 	var noise_y = fmod(position.y - t, 1200.0);

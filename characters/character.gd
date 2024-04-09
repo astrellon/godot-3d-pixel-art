@@ -99,7 +99,7 @@ func _do_move(delta: Vector3):
 		new_move_speed = MoveSpeed.Walking
 		global_translate(delta)
 
-	var sprite_name = _create_animation_name(new_move_speed, new_facing)
+	var sprite_name = Character._create_animation_name(new_move_speed, new_facing)
 	if sprite_name != _prev_animation:
 		for g in _child_graphics:
 			g.play(sprite_name)

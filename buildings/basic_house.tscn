@@ -1,11 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://cxdwdfubg2srw"]
+[gd_scene load_steps=8 format=3 uid="uid://cxdwdfubg2srw"]
 
 [ext_resource type="PackedScene" uid="uid://dt4nltyd1qpp4" path="res://buildings/BasicHouse.glb" id="1_b5h8f"]
-[ext_resource type="Material" path="res://materials/outline_altas.tres" id="2_hp1gd"]
+[ext_resource type="Material" uid="uid://dc332g0u2nidr" path="res://materials/outline_altas.tres" id="2_hp1gd"]
 [ext_resource type="Script" path="res://light_flicker.gd" id="3_1pbae"]
 [ext_resource type="ArrayMesh" uid="uid://buhtkqqtm6w5d" path="res://buildings/smoke_mesh.tres" id="3_4pjwh"]
-[ext_resource type="Material" path="res://materials/dark_red.tres" id="4_xum6w"]
-[ext_resource type="Material" path="res://materials/brown.tres" id="5_perqv"]
 
 [sub_resource type="Curve" id="Curve_pnq0e"]
 _data = [Vector2(0, 0.00564265), 0.0, 6.0684, 0, 0, Vector2(0.120879, 0.995925), 0.741693, 0.741693, 0, 0, Vector2(0.768116, 0.758242), -1.03987, -1.03987, 0, 0, Vector2(1, 0.076923), 0.0, 0.0, 0, 0]
@@ -57,28 +55,3 @@ light_color = Color(0.886275, 0.827451, 0.462745, 1)
 light_energy = 6.638
 shadow_enabled = true
 script = ExtResource("3_1pbae")
-
-[node name="BasicHouseRoofOutline" parent="." index="6"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.998302, 0)
-visible = false
-surface_material_override/0 = ExtResource("4_xum6w")
-
-[node name="BasicHouseOutline" parent="." index="7"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.998302, 0)
-visible = false
-surface_material_override/0 = ExtResource("5_perqv")
-
-[node name="BasicHouseDoorOutline1" parent="." index="8"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.998302, 0)
-visible = false
-surface_material_override/0 = ExtResource("4_xum6w")
-
-[node name="BasicHouseDoorOutline2" parent="." index="9"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.998302, 0)
-visible = false
-surface_material_override/0 = ExtResource("4_xum6w")
-
-[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="." index="10"]
-radius = 1.5
-vertices = PackedVector3Array(-0.999542, 0, -1.00921, -1.08384, 0, 0.994593, 1.04881, 0, 1.03538, 1.02424, 0, -1.11856)
-use_3d_avoidance = true

@@ -1,0 +1,49 @@
+[gd_scene load_steps=8 format=3 uid="uid://ry7q2wq2klx6"]
+
+[ext_resource type="ArrayMesh" uid="uid://buhtkqqtm6w5d" path="res://buildings/smoke_mesh.tres" id="1_oe5k1"]
+[ext_resource type="Script" path="res://buildings/place_smoke.gd" id="2_y57pu"]
+
+[sub_resource type="Curve" id="Curve_iw88q"]
+max_value = 100.0
+_data = [Vector2(0, 30.7692), 0.0, 0.0, 0, 0, Vector2(1, 4.39561), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_svrqh"]
+texture_mode = 1
+curve = SubResource("Curve_iw88q")
+
+[sub_resource type="Curve" id="Curve_skowo"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -3.76313, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_qcwww"]
+curve = SubResource("Curve_skowo")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_o7hk8"]
+spread = 180.0
+flatness = 1.0
+initial_velocity_min = 7.0
+initial_velocity_max = 8.5
+orbit_velocity_max = 0.247
+gravity = Vector3(0, 0, 0)
+damping_min = 0.55
+damping_max = 0.65
+damping_curve = SubResource("CurveTexture_svrqh")
+scale_min = 0.2
+scale_max = 0.3
+scale_curve = SubResource("CurveTexture_qcwww")
+turbulence_noise_strength = 0.1
+turbulence_noise_scale = 8.765
+
+[node name="PlaceSmoke" type="GPUParticles3D"]
+emitting = false
+amount = 50
+one_shot = true
+preprocess = 0.15
+explosiveness = 0.91
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_o7hk8")
+draw_pass_1 = ExtResource("1_oe5k1")
+script = ExtResource("2_y57pu")
+
+[connection signal="finished" from="." to="." method="_on_finished"]

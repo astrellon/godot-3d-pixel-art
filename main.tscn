@@ -1,8 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://bq873prt22uia"]
+[gd_scene load_steps=18 format=3 uid="uid://bq873prt22uia"]
 
 [ext_resource type="Script" path="res://rotator.gd" id="1_ocppm"]
 [ext_resource type="Material" uid="uid://bklqhvlyb1b8i" path="res://materials/grass.tres" id="2_keywd"]
 [ext_resource type="PackedScene" uid="uid://ctfu3ikk4bkty" path="res://plants/tree.tscn" id="4_n4dj8"]
+[ext_resource type="Texture2D" uid="uid://dg87pfwpl5xk4" path="res://assets/leaves.png" id="5_yurwk"]
 [ext_resource type="PackedScene" uid="uid://cxdwdfubg2srw" path="res://buildings/basic_house.tscn" id="6_u4bng"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_bo47y"]
@@ -42,6 +43,21 @@ geometry_source_geometry_mode = 1
 agent_height = 0.5
 agent_radius = 0.2
 agent_max_climb = 0.1
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_uswy7"]
+emission_shape = 2
+emission_sphere_radius = 1.0
+gravity = Vector3(0, 0, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aefpd"]
+transparency = 1
+albedo_texture = ExtResource("5_yurwk")
+texture_filter = 0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_pnixw"]
+material = SubResource("StandardMaterial3D_aefpd")
+size = Vector2(0.889, 0.889)
+orientation = 2
 
 [node name="Node3D" type="Node3D" groups=["navigation_mesh_source_group"]]
 
@@ -125,3 +141,17 @@ material = SubResource("FogMaterial_im3sb")
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_xd0qs")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.7878, 4.8683, 3.19257)
+amount = 64
+lifetime = 10.0
+preprocess = 1.0
+speed_scale = 0.1
+explosiveness = 1.0
+visibility_aabb = AABB(-1, -1, -1, 2, 2, 2)
+local_coords = true
+draw_order = 3
+transform_align = 1
+process_material = SubResource("ParticleProcessMaterial_uswy7")
+draw_pass_1 = SubResource("PlaneMesh_pnixw")

@@ -22,15 +22,22 @@ float remap(float value, float low1, float high1, float low2, float high2) {
     return low2 + (value - low1) * (high2 - low2) / (high1 - low1);
 }
 
+varying float instance_id;
+
 void vertex() {
-	float t = TIME + float(INSTANCE_ID);
+	instance_id = float(INSTANCE_ID);
+	float t = TIME + instance_id;
 	
 	VERTEX += vec3(sin(t * 0.5), cos(t * 0.65), sin(t * 0.1)) * 0.05;
 	NORMAL = normalize(VERTEX + vec3(0, 1, 0));
 }
 
 void fragment() {
-	vec4 col = texture(albedo, UV);
+	float x_offset = mod(instance_id, 2.0);
+	float y_offset = floor(instance_id * 0.5);
+	vec2 uv_offset = vec2(x_offset, y_offset) * 0.5;
+	vec2 uv = UV * 0.5 + uv_offset;
+	vec4 col = texture(albedo, uv);
 	ALBEDO = col.rgb;
 	ALPHA = col.a;
 	
@@ -76,4 +83,7 @@ void fragment() {
 		pos[2].z - pos[3].z > depth_thresh ||
 		pos[2].z - pos[4].z > depth_thresh
 		? ALBEDO * 0.25 : ALBEDO;
+		
+	ROUGHNESS = 0.9;
+	METALLIC = 0.1;
 }

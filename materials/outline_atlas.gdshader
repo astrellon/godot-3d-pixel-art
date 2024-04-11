@@ -53,7 +53,6 @@ void fragment() {
 	vec2 grid_uv = (mod(local_uv * 8.0, 1.0) + grid) / 8.0;
 	vec4 col = texture(tex, grid_uv);
 	ALBEDO = col.rgb;
-	ALPHA = col.a;
 
 	ROUGHNESS = 0.9;
 	METALLIC = 0.0;
@@ -92,15 +91,15 @@ void fragment() {
 	// final depth threshold
 	float depth_thresh = depth_threshold * depth_threshold_normal_bias;
 
-	// same for convexity; remap normal from 0..max -> low..1
-	float convex_threshold_normal_bias = remap(
-		min(norm[2].z, convex_normal_threshold),
-		0.0, convex_normal_threshold,
-		convex_normal_threshold_scale, 1.0
-	);
-	float convex_thresh = convex_threshold * convex_threshold_normal_bias;
-
 	if (length(edge_color) > 0.01) {
+		// same for convexity; remap normal from 0..max -> low..1
+		float convex_threshold_normal_bias = remap(
+			min(norm[2].z, convex_normal_threshold),
+			0.0, convex_normal_threshold,
+			convex_normal_threshold_scale, 1.0
+		);
+		float convex_thresh = convex_threshold * convex_threshold_normal_bias;
+
 		vec3 new_edge_colour = col.rgb * edge_color.rgb;
 		// ===== edge ===== //
 		float is_edge = 0.0;

@@ -1,5 +1,5 @@
 shader_type spatial;
-render_mode world_vertex_coords, depth_prepass_alpha, cull_back;
+render_mode world_vertex_coords;
 
 global uniform vec2 screen_size;
 
@@ -18,5 +18,5 @@ void fragment() {
 	// Called for every pixel the material is visible on.
 	vec4 col = texture(tex, (SCREEN_UV - world_offset) * screen_size / texture_size);
 	ALBEDO = col.rgb;
-	ALPHA = col.a;
+	//ALPHA = col.a;
 }

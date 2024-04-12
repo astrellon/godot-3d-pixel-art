@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://ctfu3ikk4bkty"]
 
 [ext_resource type="PackedScene" uid="uid://c36475h22a84r" path="res://plants/Tree.glb" id="1_8qoo2"]
-[ext_resource type="Material" uid="uid://dc332g0u2nidr" path="res://materials/outline_altas.tres" id="2_yjmtx"]
+[ext_resource type="Material" path="res://materials/outline_altas.tres" id="2_yjmtx"]
 [ext_resource type="Material" uid="uid://c33ogg8bfojxg" path="res://plants/tree_leaves.tres" id="3_ulwo5"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7w6wr"]

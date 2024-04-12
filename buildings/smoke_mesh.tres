@@ -1,6 +1,6 @@
 [gd_resource type="ArrayMesh" load_steps=3 format=3 uid="uid://buhtkqqtm6w5d"]
 
-[ext_resource type="Material" uid="uid://bsjwox62f2xk5" path="res://buildings/smoke_material.tres" id="1_jr7c8"]
+[ext_resource type="Material" path="res://buildings/smoke_material.tres" id="1_jr7c8"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_io7l1"]
 _surfaces = [{

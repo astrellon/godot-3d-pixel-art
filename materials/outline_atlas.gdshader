@@ -45,7 +45,6 @@ void vertex() {
 }
 
 void fragment() {
-	// ALBEDO = albedo.rgb;
 	vec2 grid = floor(UV * 8.0);
 	float grid_pos = grid.x + grid.y * 8.0;
 
@@ -53,6 +52,7 @@ void fragment() {
 	vec2 grid_uv = (mod(local_uv * 8.0, 1.0) + grid) / 8.0;
 	vec4 col = texture(tex, grid_uv);
 	ALBEDO = col.rgb;
+	ALPHA = col.a;
 
 	ROUGHNESS = 0.9;
 	METALLIC = 0.0;

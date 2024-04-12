@@ -4,11 +4,7 @@ render_mode depth_prepass_alpha;
 uniform sampler2D depth_texture : hint_depth_texture, repeat_disable, filter_nearest;
 uniform sampler2D normal_roughness_texture : hint_normal_roughness_texture, repeat_disable, filter_nearest;
 
-global uniform vec2 screen_size;
 uniform sampler2D albedo : source_color, filter_nearest;
-uniform vec2 texture_size = vec2(128.0, 128.0);
-
-varying vec2 world_offset;
 
 group_uniforms outline;
 uniform float depth_threshold : hint_range(0.0, 1.0, 0.01) = 0.25;
@@ -26,23 +22,66 @@ float remap(float value, float low1, float high1, float low2, float high2) {
     return low2 + (value - low1) * (high2 - low2) / (high1 - low1);
 }
 
+varying float instance_id;
+
+mat3 rotateX(float theta)
+{
+	float cosa = cos(theta);
+	float sina = sin(theta);
+
+	mat3 rotate_x  = mat3(
+	   vec3(1.0, 0.0, 0.0),
+	   vec3(0.0, cosa, -sina),
+	   vec3(0.0, sina, cosa)
+	);
+
+	return rotate_x;
+}
+
+mat3 rotateY(float theta)
+{
+	float cosa = cos(theta);
+	float sina = sin(theta);
+
+	mat3 rotate_y  = mat3(
+	   vec3(cosa, 0.0, sina),
+	   vec3(0.0, 1.0, 0.0),
+	   vec3(-sina, 0.0, cosa)
+	);
+
+	return rotate_y;
+}
+
+mat3 rotateZ(float theta)
+{
+	float cosa = cos(theta);
+	float sina = sin(theta);
+
+	mat3 rotate_z  = mat3(
+	   vec3(cosa,-sina, 0.0),
+	   vec3(sina, cosa, 0.0),
+	   vec3(0.0, 0.0, 1.0)
+	);
+
+	return rotate_z;
+}
+
 void vertex() {
-	float t = TIME + float(INSTANCE_ID);
+	float id = float(INSTANCE_ID);
+	float t = TIME + id;
+	vec4 world_pos = MODELVIEW_MATRIX * vec4(0.0, 0.0, 0.0, 1.0);
+	instance_id = round(world_pos.x * 11.0 + world_pos.y * 7.0 + world_pos.z * 3.5);
 	
-	vec3 offset = vec3(sin(t * 0.5), cos(t * 0.65), sin(t * 0.1)) * 0.05;
-	vec4 world_pos = MODELVIEW_MATRIX * vec4(offset, 1.0);
-	world_pos = PROJECTION_MATRIX * world_pos;
-	world_offset = world_pos.xy * 0.5;
-	
-	VERTEX += offset;
+	VERTEX += vec3(sin(t * 0.5), cos(t * 0.65), sin(t * 0.1)) * 0.05;
 	NORMAL = normalize(VERTEX);
 }
 
 void fragment() {
-	
-	vec2 local_uv = (SCREEN_UV - world_offset) * screen_size / texture_size;
-	vec2 grid_uv = (mod(local_uv * 2.0, 1.0)) / 2.0;
-	vec4 col = texture(albedo, grid_uv);
+	float x_offset = mod(instance_id, 2.0);
+	float y_offset = floor(instance_id * 0.5);
+	vec2 uv_offset = vec2(x_offset, y_offset) * 0.5;
+	vec2 uv = UV * 0.5 + uv_offset;
+	vec4 col = texture(albedo, uv);
 	ALBEDO = col.rgb;
 	ALPHA = col.a;
 	
@@ -51,6 +90,7 @@ void fragment() {
 	}
 	
 	vec2 texel_size = 1.0 / VIEWPORT_SIZE;
+	
 	vec2 offset[5] = {
 					 vec2(-1, 0),
 		vec2(0, -1), vec2( 0, 0), vec2(0, 1),

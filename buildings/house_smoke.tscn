@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://d1y7lpv08rfxl"]
+
+[ext_resource type="ArrayMesh" uid="uid://buhtkqqtm6w5d" path="res://buildings/smoke_mesh.tres" id="1_xc1er"]
+
+[sub_resource type="Curve" id="Curve_pnq0e"]
+_data = [Vector2(0, 0.00564265), 0.0, 6.0684, 0, 0, Vector2(0.120879, 0.995925), 0.741693, 0.741693, 0, 0, Vector2(0.768116, 0.758242), -1.03987, -1.03987, 0, 0, Vector2(1, 0.076923), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_8nv4o"]
+curve = SubResource("Curve_pnq0e")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_s3awf"]
+direction = Vector3(0, 10, 0)
+initial_velocity_min = 1.2
+initial_velocity_max = 1.2
+gravity = Vector3(0, 0, 0)
+scale_min = 0.15
+scale_max = 0.3
+scale_curve = SubResource("CurveTexture_8nv4o")
+turbulence_enabled = true
+turbulence_influence_min = 0.01
+turbulence_influence_max = 0.015
+
+[node name="HouseSmoke" type="GPUParticles3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.373706, 2.24687, -0.649913)
+lifetime = 2.0
+visibility_aabb = AABB(-2, -1, -2, 4, 3, 4)
+process_material = SubResource("ParticleProcessMaterial_s3awf")
+draw_pass_1 = ExtResource("1_xc1er")

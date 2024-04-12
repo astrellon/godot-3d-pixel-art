@@ -1,0 +1,12 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://c33ogg8bfojxg"]
+
+[ext_resource type="Shader" path="res://materials/tree_leaves.gdshader" id="1_cpdnh"]
+[ext_resource type="Texture2D" uid="uid://dg87pfwpl5xk4" path="res://assets/leaves.png" id="2_q4cgb"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_cpdnh")
+shader_parameter/depth_threshold = 0.25
+shader_parameter/depth_normal_threshold = 0.5
+shader_parameter/depth_normal_threshold_scale = 2.0
+shader_parameter/albedo = ExtResource("2_q4cgb")

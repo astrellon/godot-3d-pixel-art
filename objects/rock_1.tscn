@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://dn8bcltala5lr"]
+
+[ext_resource type="PackedScene" uid="uid://o2lek0dd76t3" path="res://objects/rock1.glb" id="1_cshk7"]
+[ext_resource type="Material" uid="uid://ce2o3x5yxbkqa" path="res://materials/outline_edges_altas.tres" id="2_d1bs6"]
+
+[node name="rock1" instance=ExtResource("1_cshk7")]
+
+[node name="Rock1" parent="." index="0"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+surface_material_override/0 = ExtResource("2_d1bs6")

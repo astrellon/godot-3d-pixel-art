@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://d3fouwbc6vmii"]
+
+[ext_resource type="PackedScene" uid="uid://bt5gyk2ye3vkh" path="res://buildings/LongHouse.glb" id="1_u87n8"]
+[ext_resource type="Material" uid="uid://ce2o3x5yxbkqa" path="res://materials/outline_edges_altas.tres" id="2_i5ogi"]
+[ext_resource type="Script" path="res://light_flicker.gd" id="3_q03km"]
+[ext_resource type="PackedScene" uid="uid://d1y7lpv08rfxl" path="res://buildings/house_smoke.tscn" id="4_ckk58"]
+
+[node name="LongHouse2" instance=ExtResource("1_u87n8")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 1, 0)
+
+[node name="LongHouse" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_i5ogi")
+
+[node name="LongHouseDoor" parent="." index="1"]
+surface_material_override/0 = ExtResource("2_i5ogi")
+
+[node name="LongHouseRoof" parent="." index="2"]
+surface_material_override/0 = ExtResource("2_i5ogi")
+
+[node name="LongHouseWindowsBack" parent="." index="3"]
+surface_material_override/0 = ExtResource("2_i5ogi")
+
+[node name="LongHouseWindowsFront" parent="." index="4"]
+surface_material_override/0 = ExtResource("2_i5ogi")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="." index="5"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.546437, -0.443706, -0.752986)
+light_color = Color(0.886275, 0.827451, 0.462745, 1)
+light_energy = 6.638
+shadow_enabled = true
+script = ExtResource("3_q03km")
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="." index="6"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.546437, -0.443706, 0.742012)
+light_color = Color(0.886275, 0.827451, 0.462745, 1)
+light_energy = 6.638
+shadow_enabled = true
+script = ExtResource("3_q03km")
+
+[node name="HouseSmoke" parent="." index="7" instance=ExtResource("4_ckk58")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.381429, 1.17274, -1.36718)

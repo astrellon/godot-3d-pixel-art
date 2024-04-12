@@ -4,11 +4,7 @@ render_mode depth_prepass_alpha;
 uniform sampler2D depth_texture : hint_depth_texture, repeat_disable, filter_nearest;
 uniform sampler2D normal_roughness_texture : hint_normal_roughness_texture, repeat_disable, filter_nearest;
 
-global uniform vec2 screen_size;
 uniform sampler2D albedo : source_color, filter_nearest;
-uniform vec2 texture_size = vec2(128.0, 128.0);
-
-varying vec2 world_offset;
 
 group_uniforms outline;
 uniform float depth_threshold : hint_range(0.0, 1.0, 0.01) = 0.25;
@@ -26,23 +22,38 @@ float remap(float value, float low1, float high1, float low2, float high2) {
     return low2 + (value - low1) * (high2 - low2) / (high1 - low1);
 }
 
+varying float instance_id;
+
 void vertex() {
-	float t = TIME + float(INSTANCE_ID);
+	instance_id = float(INSTANCE_ID);
+	float t = TIME + instance_id;
 	
-	vec3 offset = vec3(sin(t * 0.5), cos(t * 0.65), sin(t * 0.1)) * 0.05;
-	vec4 world_pos = MODELVIEW_MATRIX * vec4(offset, 1.0);
-	world_pos = PROJECTION_MATRIX * world_pos;
-	world_offset = world_pos.xy * 0.5;
-	
-	VERTEX += offset;
+	VERTEX += vec3(sin(t * 0.5), cos(t * 0.65), sin(t * 0.1)) * 0.05;
 	NORMAL = normalize(VERTEX);
+	
+	vec3 local_up = MODEL_MATRIX[1].xyz;
+	//cross of:
+	//	local_transform.basis.y     and    to_world(view_space.forward)
+	//normalized
+	//(represents right direction)
+	vec4 ax = vec4(normalize(cross(local_up, INV_VIEW_MATRIX[2].xyz)), 0.0);
+	//local_transform.basis.y
+	//(represents up direction)
+	vec4 ay = vec4(local_up.xyz, 0.0);
+	//cross of:
+	//	to_world(view_space.right)    and    local_transform.basis.y
+	//(represents forward direction)
+	vec4 az = vec4(normalize(cross(INV_VIEW_MATRIX[0].xyz, local_up)), 0.0);
+	MODELVIEW_MATRIX = VIEW_MATRIX * mat4(ax, ay, az, MODEL_MATRIX[3]);
+	MODELVIEW_NORMAL_MATRIX = mat3(MODELVIEW_MATRIX);
 }
 
 void fragment() {
-	
-	vec2 local_uv = (SCREEN_UV - world_offset) * screen_size / texture_size;
-	vec2 grid_uv = (mod(local_uv * 2.0, 1.0)) / 2.0;
-	vec4 col = texture(albedo, grid_uv);
+	float x_offset = mod(instance_id, 2.0);
+	float y_offset = floor(instance_id * 0.5);
+	vec2 uv_offset = vec2(x_offset, y_offset) * 0.5;
+	vec2 uv = UV * 0.5 + uv_offset;
+	vec4 col = texture(albedo, uv);
 	ALBEDO = col.rgb;
 	ALPHA = col.a;
 	
@@ -51,6 +62,7 @@ void fragment() {
 	}
 	
 	vec2 texel_size = 1.0 / VIEWPORT_SIZE;
+	
 	vec2 offset[5] = {
 					 vec2(-1, 0),
 		vec2(0, -1), vec2( 0, 0), vec2(0, 1),

@@ -10,10 +10,12 @@ config_version=5
 
 [application]
 
-config/name="Test"
+config/name="3D Pixel Art Test"
+config/description="A test in using pixel art in 3D."
+config/version="0.0.1"
 run/main_scene="res://game.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="res://icon.png"
 
 [display]
 

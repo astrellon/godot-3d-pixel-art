@@ -49,7 +49,7 @@ script = ExtResource("2_y57pu")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_g3btw")
-volume_db = -2.862
+volume_db = -6.679
 pitch_scale = 1.33
 autoplay = true
 

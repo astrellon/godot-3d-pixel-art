@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://c1lphnwhrmyeu"
+path="res://.godot/imported/Retro FootStep Grass 01-pitch-up.ogg-ca8586fced8c3f9906699dc06f9ba9a2.oggvorbisstr"
+
+[deps]
+
+source_file="res://audio/footsteps/Retro FootStep Grass 01-pitch-up.ogg"
+dest_files=["res://.godot/imported/Retro FootStep Grass 01-pitch-up.ogg-ca8586fced8c3f9906699dc06f9ba9a2.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

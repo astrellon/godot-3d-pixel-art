@@ -3,6 +3,9 @@ class_name Character extends Node3D
 @export var base_sprite_frames: SpriteFrames
 @export var is_adult := false
 @export var is_selected := false
+@export var footstep_sounds: Array[AudioStream]
+@export var footstep_source: AudioStreamPlayer
+@export var footstep_period := 0.4
 
 @export_node_path("Node3D") var hair_path
 @onready var _hair = get_node(hair_path)
@@ -31,6 +34,7 @@ var _nav_path := PackedVector3Array()
 var _nav_index := 0
 var _navigating := false
 var _child_graphics: Array[AnimatedSprite3D] = []
+var _footstep_timer := 0.0
 
 func _ready():
 	for child in get_children():
@@ -58,7 +62,7 @@ func _process(delta: float) -> void:
 		else:
 			_navigating = false
 
-	_do_move(move)
+	_do_move(delta, move)
 	
 	_selected.visible = is_selected
 
@@ -77,13 +81,13 @@ func calculate_nav(target:Vector3):
 	_navigating = true
 
 
-func _do_move(delta: Vector3):
+func _do_move(delta: float, move_delta: Vector3):
 	var new_facing = _facing
 	var new_move_speed = MoveSpeed.Idle
 
-	if delta != Vector3.ZERO:
-		var xDot = Vector3.RIGHT.dot(delta)
-		var zDot = Vector3.FORWARD.dot(delta)
+	if move_delta != Vector3.ZERO:
+		var xDot = Vector3.RIGHT.dot(move_delta)
+		var zDot = Vector3.FORWARD.dot(move_delta)
 
 		if abs(xDot) > abs(zDot):
 			if xDot > 0:
@@ -97,7 +101,7 @@ func _do_move(delta: Vector3):
 				new_facing = MoveDirection.ZNeg
 
 		new_move_speed = MoveSpeed.Walking
-		global_translate(delta)
+		global_translate(move_delta)
 
 	var sprite_name = Character._create_animation_name(new_move_speed, new_facing)
 	if sprite_name != _prev_animation:
@@ -107,6 +111,15 @@ func _do_move(delta: Vector3):
 
 	_facing = new_facing
 	_move_speed = new_move_speed
+	
+	if _move_speed == MoveSpeed.Walking:
+		_footstep_timer -= delta
+		if _footstep_timer < 0.0:
+			_footstep_timer = footstep_period
+			footstep_source.stream = footstep_sounds.pick_random()
+			footstep_source.play()
+	else:
+		_footstep_timer = 0.0
 
 
 static func _create_animation_name(move_speed: MoveSpeed, facing: MoveDirection):

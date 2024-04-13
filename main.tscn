@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bq873prt22uia"]
+[gd_scene load_steps=15 format=3 uid="uid://bq873prt22uia"]
 
 [ext_resource type="Script" path="res://rotator.gd" id="1_ocppm"]
 [ext_resource type="Material" uid="uid://bklqhvlyb1b8i" path="res://materials/grass.tres" id="2_keywd"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dn8bcltala5lr" path="res://objects/rock_1.tscn" id="6_x7wbc"]
 [ext_resource type="PackedScene" uid="uid://i0kxsc0ixskp" path="res://objects/rock_2.tscn" id="7_7dbe0"]
 [ext_resource type="PackedScene" uid="uid://d3fouwbc6vmii" path="res://buildings/long_house.tscn" id="8_xgu4c"]
+[ext_resource type="AudioStream" uid="uid://b2x732hax3rsy" path="res://audio/background/637563__kyles__forest-boreal-light-wind-breeze-through-leaves-close-loud-birds.ogg" id="9_qxwk8"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_r758l"]
 rough = true
@@ -163,3 +164,8 @@ transform = Transform3D(-0.944606, 0, 0.328208, 0.302536, -0.387709, 0.87072, 0.
 
 [node name="rock7" parent="Rocks" instance=ExtResource("7_7dbe0")]
 transform = Transform3D(-0.187964, 0, -0.982176, 0, 1, 0, 0.982176, 0, -0.187964, 14.3161, -0.00965658, 0.189957)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_qxwk8")
+volume_db = 6.679
+autoplay = true

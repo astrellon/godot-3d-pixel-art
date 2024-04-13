@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://ry7q2wq2klx6"]
+[gd_scene load_steps=9 format=3 uid="uid://ry7q2wq2klx6"]
 
 [ext_resource type="ArrayMesh" uid="uid://buhtkqqtm6w5d" path="res://buildings/smoke_mesh.tres" id="1_oe5k1"]
 [ext_resource type="Script" path="res://buildings/place_smoke.gd" id="2_y57pu"]
+[ext_resource type="AudioStream" uid="uid://dr727idg2uw2q" path="res://audio/buildings/Placed.ogg" id="3_g3btw"]
 
 [sub_resource type="Curve" id="Curve_iw88q"]
 max_value = 100.0
@@ -45,5 +46,11 @@ local_coords = true
 process_material = SubResource("ParticleProcessMaterial_o7hk8")
 draw_pass_1 = ExtResource("1_oe5k1")
 script = ExtResource("2_y57pu")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_g3btw")
+volume_db = -2.862
+pitch_scale = 1.33
+autoplay = true
 
 [connection signal="finished" from="." to="." method="_on_finished"]

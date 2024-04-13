@@ -1,9 +1,11 @@
-[gd_scene load_steps=27 format=3 uid="uid://b83s201t081sa"]
+[gd_scene load_steps=29 format=3 uid="uid://b83s201t081sa"]
 
 [ext_resource type="Script" path="res://characters/character.gd" id="1_d0xyw"]
 [ext_resource type="SpriteFrames" uid="uid://d14pywecu66ek" path="res://characters/adult_sprites.tres" id="2_ewg07"]
+[ext_resource type="AudioStream" uid="uid://c1lphnwhrmyeu" path="res://audio/footsteps/Retro FootStep Grass 01-pitch-up.ogg" id="3_50a64"]
 [ext_resource type="Texture2D" uid="uid://bjw0rewn0gq57" path="res://assets/hair.png" id="3_s2aeq"]
 [ext_resource type="Texture2D" uid="uid://41w35cvodh21" path="res://assets/arrow.png" id="4_2tqw2"]
+[ext_resource type="AudioStream" uid="uid://b8y6qffiu03bd" path="res://audio/footsteps/Retro FootStep Grass 01.ogg" id="4_a6yjh"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_os42m"]
 atlas = ExtResource("3_s2aeq")
@@ -191,11 +193,13 @@ animations = [{
 [sub_resource type="SphereShape3D" id="SphereShape3D_q6cca"]
 radius = 0.25
 
-[node name="Adult" type="Node3D" groups=["snap"]]
-transform = Transform3D(0.707107, 0.353554, -0.612372, 3.02059e-16, 0.866025, 0.500001, 0.707107, -0.353554, 0.612372, -5.202, 0.1, 3.076)
+[node name="Adult" type="Node3D" node_paths=PackedStringArray("footstep_source") groups=["snap"]]
+transform = Transform3D(0.707107, 0.353554, -0.612372, 3.02059e-16, 0.866025, 0.500001, 0.707107, -0.353554, 0.612372, 0, 0, 0)
 script = ExtResource("1_d0xyw")
 base_sprite_frames = ExtResource("2_ewg07")
 is_adult = true
+footstep_sounds = Array[AudioStream]([ExtResource("3_50a64"), ExtResource("4_a6yjh")])
+footstep_source = NodePath("Footsteps")
 hair_path = NodePath("Hair")
 base_path = NodePath("Base")
 selected_path = NodePath("Selected")
@@ -222,11 +226,6 @@ render_priority = 1
 sprite_frames = SubResource("SpriteFrames_dsrwg")
 animation = &"idle_z_pos"
 
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(0.707107, 0.353554, -0.612372, 3.02059e-16, 0.866025, 0.500001, 0.707107, -0.353554, 0.612372, -4.76837e-07, 0.238159, 4.76837e-07)
-visible = false
-light_energy = 0.3
-
 [node name="RigidBody3D" type="CharacterBody3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
@@ -241,3 +240,6 @@ billboard = 1
 alpha_cut = 1
 texture_filter = 0
 texture = ExtResource("4_2tqw2")
+
+[node name="Footsteps" type="AudioStreamPlayer" parent="."]
+volume_db = -10.495

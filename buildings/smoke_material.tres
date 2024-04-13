@@ -5,8 +5,8 @@
 [resource]
 render_priority = 0
 shader = ExtResource("1_j0j5r")
-shader_parameter/albedo = Color(0.886275, 0.890196, 0.890196, 1)
-shader_parameter/outline_color = Color(0.196078, 0.141176, 0.45098, 1)
+shader_parameter/albedo = Color(0.866667, 0.898039, 0.901961, 1)
+shader_parameter/outline_color = Color(0.196078, 0.203922, 0.254902, 1)
 shader_parameter/edge_color = Color(0, 0, 0, 1)
 shader_parameter/depth_threshold = 0.25
 shader_parameter/depth_normal_threshold = 0.5

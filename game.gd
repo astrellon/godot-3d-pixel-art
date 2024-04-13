@@ -8,6 +8,7 @@ extends Control
 @export var building_file: PackedScene
 @export var building_smoke_file: PackedScene
 @export var main_scene: Node3D
+@export var pointer: Node3D
 
 signal input_event(event: InputEvent)
 
@@ -16,9 +17,11 @@ enum ClickMode { None, Build }
 
 
 var _clicked_at := Vector2.ZERO
+var _mouse_pos := Vector2.ZERO
 var _click_mode := ClickMode.None
 var _clicked := false
 var _window_size := Vector2(1280, 720)
+var _pointer_height := 0.25
 
 
 func _ready() -> void:
@@ -37,30 +40,46 @@ func _on_window_resize() -> void:
 
 func _input(event: InputEvent):
 	input_event.emit(event)
-	if event is InputEventMouseButton && event.button_index == 1 && event.is_released():
-		_clicked_at = event.position * _window_size / render_size.size / pixel_size
-		_clicked = true
+	if event is InputEventMouseMotion:
+		_mouse_pos = event.position * _window_size / render_size.size / pixel_size
+		
+	if event is InputEventMouseButton:
+		_mouse_pos = event.position * _window_size / render_size.size / pixel_size
+		if event.button_index == MOUSE_BUTTON_LEFT && event.is_released():
+			_clicked_at = _mouse_pos
+			_clicked = true
+		
+		if event.button_index == MOUSE_BUTTON_WHEEL_UP && event.is_released():
+			_pointer_height = max(0.0, _pointer_height - 0.05)
+		if event.button_index == MOUSE_BUTTON_WHEEL_DOWN && event.is_released():
+			_pointer_height = min(10.0, _pointer_height + 0.05)
 
 
-func _physics_process(_delta: float) -> void:
-	if !_clicked:
-		return
-
-	_clicked = false
-	var mouse_pos = _clicked_at
+func _handle_mouse_ray(mouse_pos: Vector2) -> Dictionary:
 	var from = camera.project_ray_origin(mouse_pos)
 	var to = from + camera.project_ray_normal(mouse_pos) * 100.0
 	var ray_cast = PhysicsRayQueryParameters3D.create(from, to)
 	ray_cast.collide_with_areas = true
 
 	var space_state = camera.get_world_3d().direct_space_state
-	var result = space_state.intersect_ray(ray_cast)
+	return space_state.intersect_ray(ray_cast)
+	
 
-	if result:
+func _physics_process(_delta: float) -> void:
+	var ray_result = _handle_mouse_ray(_mouse_pos)
+	if pointer && ray_result:
+		pointer.global_position = ray_result['position'] + Vector3.UP * _pointer_height
+		
+	if !_clicked:
+		return
+
+	_clicked = false
+
+	if ray_result:
 		if _click_mode == ClickMode.Build:
-			_handle_click_build(result)
+			_handle_click_build(ray_result)
 		elif _click_mode == ClickMode.None:
-			_handle_click_general(result)
+			_handle_click_general(ray_result)
 	else:
 		print("No raycast hit")
 

@@ -1,17 +1,19 @@
-[gd_scene load_steps=44 format=3 uid="uid://cvkh4akw0i5yi"]
+[gd_scene load_steps=50 format=3 uid="uid://cvkh4akw0i5yi"]
 
 [ext_resource type="PackedScene" uid="uid://bq873prt22uia" path="res://main.tscn" id="1_3w5iq"]
 [ext_resource type="Script" path="res://camera/main_camera.gd" id="1_gn25k"]
 [ext_resource type="Script" path="res://game.gd" id="1_sdiki"]
-[ext_resource type="Material" path="res://materials/outline_altas.tres" id="2_y2ecl"]
+[ext_resource type="Material" uid="uid://dc332g0u2nidr" path="res://materials/outline_altas.tres" id="2_y2ecl"]
 [ext_resource type="PackedScene" uid="uid://bxv2bd0un8t7" path="res://characters/child_character.tscn" id="3_mowa2"]
 [ext_resource type="ArrayMesh" uid="uid://buhtkqqtm6w5d" path="res://buildings/smoke_mesh.tres" id="3_rtepk"]
 [ext_resource type="PackedScene" uid="uid://b83s201t081sa" path="res://characters/adult_character.tscn" id="4_7j5jx"]
 [ext_resource type="Script" path="res://light_flicker.gd" id="4_dplet"]
-[ext_resource type="Material" path="res://materials/dark_red.tres" id="5_ay0jj"]
-[ext_resource type="FontFile" uid="uid://bp1n3rob5u1xu" path="res://assets/Dogica/TTF/dogicapixel.ttf" id="6_4wxuv"]
-[ext_resource type="Material" path="res://materials/brown.tres" id="6_5tnue"]
-[ext_resource type="PackedScene" path="res://buildings/place_smoke.tscn" id="7_nhp3n"]
+[ext_resource type="Material" uid="uid://b5sy64po460ci" path="res://materials/dark_red.tres" id="5_ay0jj"]
+[ext_resource type="Material" uid="uid://cxufk2e18veet" path="res://materials/brown.tres" id="6_5tnue"]
+[ext_resource type="PackedScene" uid="uid://ry7q2wq2klx6" path="res://buildings/place_smoke.tscn" id="7_nhp3n"]
+[ext_resource type="Script" path="res://sun_light.gd" id="12_3f54t"]
+[ext_resource type="Theme" uid="uid://bg3vh5a18jdfu" path="res://default_theme.tres" id="13_lov6m"]
+[ext_resource type="Script" path="res://sun_light_slider.gd" id="14_awp8o"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lamgd"]
 
@@ -315,14 +317,39 @@ _bundled = {
 "version": 3
 }
 
+[sub_resource type="Curve" id="Curve_10h1k"]
+_data = [Vector2(0, 0), 0.0, -0.715228, 0, 0, Vector2(0.253731, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -4.90842, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_dxg1q"]
+texture_mode = 1
+curve = SubResource("Curve_10h1k")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_tu73m"]
+emission_shape_scale = Vector3(10, 10, 1)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+gravity = Vector3(0, -2, 0)
+damping_min = 0.6
+damping_max = 0.6
+alpha_curve = SubResource("CurveTexture_dxg1q")
+turbulence_enabled = true
+turbulence_noise_strength = 0.25
+turbulence_influence_min = 0.01
+turbulence_influence_max = 0.02
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fsn2n"]
+albedo_color = Color(0.776471, 0.698039, 0.635294, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_jefts"]
+material = SubResource("StandardMaterial3D_fsn2n")
+size = Vector2(0.056, 0.056)
+orientation = 2
+
 [sub_resource type="ViewportTexture" id="ViewportTexture_pc3wb"]
 viewport_path = NodePath("SubViewport")
 
-[sub_resource type="Theme" id="Theme_bpbes"]
-default_font = ExtResource("6_4wxuv")
-default_font_size = 16
-
-[node name="Game" type="Control" node_paths=PackedStringArray("camera", "render_size", "viewport", "main_scene")]
+[node name="Game" type="Control" node_paths=PackedStringArray("camera", "render_size", "viewport", "main_scene", "pointer")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -331,11 +358,12 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_sdiki")
 camera = NodePath("SubViewport/Camera3D")
-render_size = NodePath("TextureRect")
+render_size = NodePath("MainDisplay")
 viewport = NodePath("SubViewport")
 building_file = SubResource("PackedScene_bw62i")
 building_smoke_file = ExtResource("7_nhp3n")
-main_scene = NodePath("SubViewport/Node3D")
+main_scene = NodePath("SubViewport/MainScene")
+pointer = NodePath("SubViewport/Pointer")
 
 [node name="SubViewport" type="SubViewport" parent="."]
 size = Vector2i(640, 360)
@@ -356,9 +384,27 @@ near = 0.075
 far = 75.0
 script = ExtResource("1_gn25k")
 
-[node name="Node3D" parent="SubViewport" instance=ExtResource("1_3w5iq")]
+[node name="DustParticles" type="GPUParticles3D" parent="SubViewport/Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, -2.98023e-08, 1, -1.43051e-06, -0.0793805, -6.38687)
+amount = 64
+lifetime = 8.0
+transform_align = 1
+process_material = SubResource("ParticleProcessMaterial_tu73m")
+draw_pass_1 = SubResource("PlaneMesh_jefts")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="MainScene" parent="SubViewport" instance=ExtResource("1_3w5iq")]
+
+[node name="Pointer" type="OmniLight3D" parent="SubViewport"]
+light_color = Color(0.882353, 0.866667, 0.843137, 1)
+shadow_enabled = true
+
+[node name="SunLight" type="DirectionalLight3D" parent="SubViewport"]
+transform = Transform3D(0.470535, 0, 0.882382, 0, 1, 0, -0.882382, 0, 0.470535, 0, 0.849448, 0)
+shadow_enabled = true
+directional_shadow_blend_splits = true
+script = ExtResource("12_3f54t")
+
+[node name="MainDisplay" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -368,13 +414,36 @@ grow_vertical = 2
 texture = SubResource("ViewportTexture_pc3wb")
 stretch_mode = 4
 
-[node name="Button" type="Button" parent="."]
+[node name="BuildButton" type="Button" parent="."]
 layout_mode = 0
 offset_left = 13.0
 offset_top = 11.0
 offset_right = 119.0
 offset_bottom = 42.0
-theme = SubResource("Theme_bpbes")
+theme = ExtResource("13_lov6m")
 text = "Build"
 
-[connection signal="pressed" from="Button" to="." method="_on_build_click"]
+[node name="TimeOfDaySlider" type="HSlider" parent="." node_paths=PackedStringArray("target", "time_label")]
+layout_mode = 0
+offset_left = 137.0
+offset_top = 6.0
+offset_right = 392.0
+offset_bottom = 45.0
+max_value = 24.0
+step = 0.01
+script = ExtResource("14_awp8o")
+target = NodePath("../SubViewport/SunLight")
+time_label = NodePath("Label")
+
+[node name="Label" type="Label" parent="TimeOfDaySlider"]
+layout_mode = 0
+offset_left = 272.0
+offset_top = 7.0
+offset_right = 313.0
+offset_bottom = 30.0
+theme = ExtResource("13_lov6m")
+text = "24:00"
+
+[connection signal="pressed" from="BuildButton" to="." method="_on_build_click"]
+[connection signal="drag_ended" from="TimeOfDaySlider" to="TimeOfDaySlider" method="_on_drag_ended"]
+[connection signal="drag_started" from="TimeOfDaySlider" to="TimeOfDaySlider" method="_on_drag_started"]

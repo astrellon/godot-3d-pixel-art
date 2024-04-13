@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://bg3vh5a18jdfu"]
+
+[ext_resource type="FontFile" uid="uid://bp1n3rob5u1xu" path="res://assets/Dogica/TTF/dogicapixel.ttf" id="1_r38bw"]
+
+[resource]
+default_font = ExtResource("1_r38bw")
+default_font_size = 16

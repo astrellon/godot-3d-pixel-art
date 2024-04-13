@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://cxdwdfubg2srw"]
 
 [ext_resource type="PackedScene" uid="uid://dt4nltyd1qpp4" path="res://buildings/BasicHouse.glb" id="1_b5h8f"]
-[ext_resource type="Material" path="res://materials/outline_altas.tres" id="2_hp1gd"]
+[ext_resource type="Material" uid="uid://dc332g0u2nidr" path="res://materials/outline_altas.tres" id="2_hp1gd"]
 [ext_resource type="Script" path="res://light_flicker.gd" id="3_1pbae"]
 [ext_resource type="PackedScene" uid="uid://d1y7lpv08rfxl" path="res://buildings/house_smoke.tscn" id="3_x8upa"]
 

@@ -100,6 +100,6 @@ void fragment() {
 		pos[2].z - pos[4].z > depth_thresh
 		? ALBEDO * 0.25 : ALBEDO;
 		
-	ROUGHNESS = 0.9;
-	METALLIC = 0.1;
+	ROUGHNESS = 0.8;
+	METALLIC = 0.2;
 }

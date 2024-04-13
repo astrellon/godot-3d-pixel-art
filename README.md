@@ -4,6 +4,8 @@ This is my approach at creating some 3D pixel art in Godot.
 
 Take the project structure with a grain of salt as I am new to Godot.
 
+![Screenshot of the game](screenshot.png)
+
 ## Basic Shader
 
 The effect works primarily using `SCREEN_UV` combined with using the current screen size and texture size to calculate what the texture lookup should be. See `materials/isometric_basic.gdshader` for the simplest example of this.

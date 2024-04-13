@@ -33,6 +33,10 @@ Pixel Font Dogica by Roberto Mocci: https://www.dafont.com/dogica.font
 
 Texel Matching Camera and Pixel Outline shader by David Holland: https://git.sr.ht/~denovodavid/3d-pixel-art-in-godot
 
+Background Wind audio by kyles: https://freesound.org/people/kyles/sounds/637563/
+
+Other sound effects by kronbits: https://kronbits.itch.io/freesfx
+
 # Author
 
 Alan Lawrey 2024

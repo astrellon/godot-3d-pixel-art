@@ -110,7 +110,7 @@ func _handle_click_general(hit_result) -> void:
 	if hit:
 		var parent = hit.get_parent()
 		if parent is Character:
-			_change_target(parent)
+			_toggle_target(parent)
 			changed_target = true
 
 	if !changed_target && target:
@@ -118,16 +118,22 @@ func _handle_click_general(hit_result) -> void:
 		target.calculate_nav(hit_position)
 
 
-func _change_target(new_target: Character) -> void:
+func _toggle_target(new_target: Character) -> void:
 	if target:
 		target.is_selected = false
+	
+	# Allows toggling the targets
+	if new_target == target:
+		new_target = null
 
 	if new_target:
 		new_target.is_selected = true
 
 	target = new_target
 
+func _cancel_click() -> void:
+	_clicked = false
 
 func _on_build_click() -> void:
-	_clicked = false
+	_cancel_click()
 	_click_mode = ClickMode.Build
